@@ -1,8 +1,8 @@
-﻿@page "/product/{productId:int}"
+﻿@page "/activity/{activityId:int}"
 @inject HttpClient http
 @inject NavigationManager navigation
 
-@if (product == null)
+@if (activity == null)
 {
     <p>Loading...</p>
 }
@@ -11,25 +11,25 @@ else
     <div class="card edit-detail">
         <header class="card-header">
             <p class="card-header-title">
-                @product.Name
+                @activity.Name
             </p>
         </header>
         <div class="card-content">
             <div class="content">
-                @if (product.Id != 0)
+                @if (activity.Id != 0)
                 {
                     <label class="label" for="id">id</label>
                     <input name="id"
                            class="input"
-                           value="@product.Id"
+                           value="@activity.Id"
                            readonly="readonly" />
                 }
                 <InputDetail Name="name"
                              Placeholder="Oranges"
-                             @bind-Value="product.Name" />
+                             @bind-Value="activity.Name" />
                 <InputDetail Name="description"
                              Placeholder="box"
-                             @bind-Value="product.Description" />
+                             @bind-Value="activity.Description" />
                 <div class="field">
                     <label class="label" for="quantity">
                         quantity
@@ -39,16 +39,16 @@ else
                            type="number"
                            min="1"
                            max="100"
-                           value="@product.Quantity"
+                           value="@activity.Quantity"
                            placeholder="1"
-                           @onchange="@(e => product.Quantity = int.Parse(e.Value.ToString()))" />
+                           @onchange="@(e => activity.Quantity = int.Parse(e.Value.ToString()))" />
                 </div>
             </div>
         </div>
         <footer class="card-footer ">
             <ButtonFooter Class="cancel-button"
                           IconClasses="fas fa-undo"
-                          OnClick="@CancelProduct"
+                          OnClick="@CancelActivity"
                           Label="Cancel" />
             <ButtonFooter Class="save-button"
                           IconClasses="fas fa-save"
@@ -59,37 +59,37 @@ else
 }
 
 @code {
-    private Product product;
+    private Activity activity;
 
-    [Parameter] public int ProductId { get; set; }
+    [Parameter] public int ActivityId { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        if (ProductId == 0)
+        if (ActivityId == 0)
         {
-            product = new Product();
+            activity = new Activity();
         }
         else
         {
-            var products = await http.GetFromJsonAsync<IEnumerable<Product>>("api/products");
-            product = products.First(p => p.Id == ProductId);
+            var activitys = await http.GetFromJsonAsync<IEnumerable<Activity>>("api/activitys");
+            activity = activitys.First(p => p.Id == ActivityId);
         }
     }
 
-    private void CancelProduct()
+    private void CancelActivity()
     {
         navigation.NavigateTo("/");
     }
 
     private async Task Save()
     {
-        if (product.Id == 0)
+        if (activity.Id == 0)
         {
-            await http.PostAsJsonAsync("api/products", product);
+            await http.PostAsJsonAsync("api/activitys", activity);
         }
         else
         {
-            await http.PutAsJsonAsync("api/products", product);
+            await http.PutAsJsonAsync("api/activitys", activity);
         }
         navigation.NavigateTo("/");
     }

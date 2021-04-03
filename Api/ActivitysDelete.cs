@@ -7,22 +7,22 @@ using Microsoft.Extensions.Logging;
 
 namespace Api
 {
-    public class ProductsDelete
+    public class ActivitysDelete
     {
-        private readonly IProductData productData;
+        private readonly IActivityData activityData;
 
-        public ProductsDelete(IProductData productData)
+        public ActivitysDelete(IActivityData activityData)
         {
-            this.productData = productData;
+            this.activityData = activityData;
         }
 
-        [FunctionName("ProductsDelete")]
+        [FunctionName("ActivitysDelete")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "products/{productId:int}")] HttpRequest req,
-            int productId,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "activitys/{activityId:int}")] HttpRequest req,
+            int activityId,
             ILogger log)
         {
-            var result = await productData.DeleteProduct(productId);
+            var result = await activityData.DeleteActivity(activityId);
 
             if (result)
             {

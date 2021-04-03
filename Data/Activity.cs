@@ -2,7 +2,7 @@
 
 namespace Data
 {
-    public class Product
+    public class Activity
     {
         public int Id { get; set; }
         public string Name { get; set; }

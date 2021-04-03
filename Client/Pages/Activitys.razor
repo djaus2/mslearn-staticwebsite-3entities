@@ -1,0 +1,72 @@
+﻿@page "/activitys"
+@inject HttpClient http
+@inject NavigationManager navigation
+
+<div class="content-container">
+    <ListHeader Title="My List"
+                HandleAdd="@AddNewActivity"
+                HandleRefresh="@HandleRefresh"
+                RoutePath="/activitys" />
+    <div class="columns is-multiline is-variable">
+        <div class="column is-8">
+            <ActivityList ErrorMessage="@errorMessage"
+                         Activitys="@activitys"
+                         SelectActivity="@SelectActivity"
+                         DeleteActivity="@DeleteActivity" />
+        </div>
+    </div>
+
+    <ModalYesNo Message="@modalMessage"
+                OnNo="@CloseModal"
+                OnYes="@DeleteFromModal"
+                Show="@showModal"/>
+</div>
+
+@code {
+    private string errorMessage = "";
+    private IEnumerable<Activity> activitys;
+    private Activity activityToDelete;
+    private bool showModal;
+    private string modalMessage = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        activitys = await http.GetFromJsonAsync<IEnumerable<Activity>>("api/activitys");
+    }
+
+    private void AddNewActivity()
+    {
+        navigation.NavigateTo("/activity/0");
+    }
+
+    private async Task HandleRefresh()
+    {
+        activitys = await http.GetFromJsonAsync<IEnumerable<Activity>>("api/activitys");
+    }
+
+    private void SelectActivity(Activity activity)
+    {
+        navigation.NavigateTo($"/activity/{activity.Id}");
+    }
+
+    private void DeleteActivity(Activity activity)
+    {
+        activityToDelete = activity;
+        showModal = true;
+        modalMessage = $"Would you like to delete {activityToDelete.Name}";
+    }
+
+    private void CloseModal()
+    {
+        activityToDelete = null;
+        showModal = false;
+    }
+
+    private async Task DeleteFromModal()
+    {
+        await http.DeleteAsync($"api/activitys/{activityToDelete.Id}");
+        await HandleRefresh();
+        activityToDelete = null;
+        showModal = false;
+    }
+}

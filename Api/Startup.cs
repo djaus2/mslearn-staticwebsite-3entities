@@ -9,7 +9,7 @@ namespace Api
     {
         public override void Configure(IFunctionsHostBuilder builder)
         {
-            builder.Services.AddSingleton<IProductData, ProductData>();
+            builder.Services.AddSingleton<IActivityData, ActivityData>();
         }
     }
 }
