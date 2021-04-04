@@ -1,0 +1,44 @@
+﻿@if (!string.IsNullOrEmpty(ErrorMessage))
+{
+    <div>@ErrorMessage</div>
+}
+else if (Helpers != null && Helpers.Count() > 0)
+{
+    <ul class="list">
+        @foreach (var helperx in Helpers)
+        {
+            <li role="presentation">
+                
+                <div class="card">
+                    <CardContent Name="@helperx.Name"
+                            Description="@helperx.Description"
+                                  />
+                   
+                    <footer class="card-footer">
+
+@*                        <ButtonFooter Class="delete-item"
+                                      IconClasses="fas fa-trash"
+                                      OnClick="@(async _ => await DeleteHelper.InvokeAsync(helper))"
+                                      Label="Delete" />
+
+                        <ButtonFooter Class="edit-item"
+                                      IconClasses="fas fa-edit"
+                                      OnClick="@(async _ => await SelectHelper.InvokeAsync(helper))"
+                                      Label="Edit" />*@
+
+                    </footer>
+
+                </div>
+
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <div>Loading data...</div>
+}
+@code {
+    [Parameter] public IEnumerable<Helper> Helpers { get; set; }
+    [Parameter] public string ErrorMessage { get; set; }
+}

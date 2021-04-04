@@ -1,0 +1,49 @@
+﻿@page "/helpers"
+@inject HttpClient http
+@inject NavigationManager navigation
+
+@if (@helpers == null)
+{
+    <div>Loading data...ONE</div>
+}
+else {
+<div class="content-container">
+    <ListHeader Title="Helpers"
+                HandleRefresh="@HandleRefresh"
+                RoutePath="/helpers" />
+    <div class="columns is-multiline is-variable">
+        <div class="column is-8">
+            <HelperList ErrorMessage="@errorMessage"
+                         Helpers="@helpers"
+                         />
+        </div>
+    </div>
+
+    <ModalYesNo Message="@modalMessage"
+                Show="@showModal"/>
+</div>
+}
+
+@code {
+    private string errorMessage = "";
+    private IEnumerable<Activity> activitys;
+    private Activity activityToDelete;
+    private bool showModal;
+    private string modalMessage = "";
+
+    private IEnumerable<Helper> helpers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        activitys = await http.GetFromJsonAsync<IEnumerable<Activity>>("api/activitys");
+        helpers = (from a in activitys where a.Helper != null select a.Helper).ToList();
+    }
+
+    private async Task HandleRefresh()
+    {
+        activitys = await http.GetFromJsonAsync<IEnumerable<Activity>>("api/activitys");
+        helpers = (from a in activitys where a.Helper != null select a.Helper).ToList();
+    }
+
+
+}

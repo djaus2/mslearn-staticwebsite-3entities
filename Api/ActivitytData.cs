@@ -23,21 +23,27 @@ namespace Api
                 Id = 10,
                 Name = "Strawberries",
                 Description = "16oz package of fresh organic strawberries",
-                Quantity = 1
+                Quantity = 1,
+                Helper = new Helper {Id = 1, Name ="Fred Nurk" },
+                Round = new Round {Id=1, No=1}
             },
             new Activity
             {
                 Id = 20,
                 Name = "Sliced bread",
                 Description = "Load of fresh sliced wheat bread",
-                Quantity = 1
+                Quantity = 1,
+                Helper = null,
+                Round = new Round {Id=2, No=2}
             },
             new Activity
             {
                 Id = 30,
                 Name = "Apples",
                 Description = "Bag of 7 fresh McIntosh apples",
-                Quantity = 1
+                Quantity = 1,
+                Helper = new Helper {Id = 3, Name ="Harry Lime" },
+                Round = new Round {Id=3, No=3}
             }
         };
 

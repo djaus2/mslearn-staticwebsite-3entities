@@ -1,0 +1,49 @@
+﻿@page "/rounds"
+@inject HttpClient http
+@inject NavigationManager navigation
+
+@if (@rounds == null)
+{
+    <div>Loading data...ONE</div>
+}
+else {
+<div class="content-container">
+    <ListHeader Title="Rounds"
+                HandleRefresh="@HandleRefresh"
+                RoutePath="/rounds" />
+    <div class="columns is-multiline is-variable">
+        <div class="column is-8">
+            <RoundList ErrorMessage="@errorMessage"
+                         Rounds="@rounds"
+                         />
+        </div>
+    </div>
+
+    <ModalYesNo Message="@modalMessage"
+                Show="@showModal"/>
+</div>
+}
+
+@code {
+    private string errorMessage = "";
+    private IEnumerable<Activity> activitys;
+    private Activity activityToDelete;
+    private bool showModal;
+    private string modalMessage = "";
+
+    private IEnumerable<Round> rounds;
+
+    protected override async Task OnInitializedAsync()
+    {
+        activitys = await http.GetFromJsonAsync<IEnumerable<Activity>>("api/activitys");
+        rounds = (from a in activitys where a.Round != null select a.Round).ToList();
+    }
+
+    private async Task HandleRefresh()
+    {
+        activitys = await http.GetFromJsonAsync<IEnumerable<Activity>>("api/activitys");
+        rounds = (from a in activitys where a.Round != null select a.Round).ToList();
+    }
+
+
+}
