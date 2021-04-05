@@ -16,15 +16,15 @@ else if (Helpers != null && Helpers.Count() > 0)
                    
                     <footer class="card-footer">
 
-@*                        <ButtonFooter Class="delete-item"
+                        <ButtonFooter Class="delete-item"
                                       IconClasses="fas fa-trash"
-                                      OnClick="@(async _ => await DeleteHelper.InvokeAsync(helper))"
+                                      OnClick="@(async _ => await DeleteHelper.InvokeAsync(helperx))"
                                       Label="Delete" />
 
                         <ButtonFooter Class="edit-item"
                                       IconClasses="fas fa-edit"
-                                      OnClick="@(async _ => await SelectHelper.InvokeAsync(helper))"
-                                      Label="Edit" />*@
+                                      OnClick="@(async _ => await SelectHelper.InvokeAsync(helperx))"
+                                      Label="Edit" />
 
                     </footer>
 
@@ -40,5 +40,7 @@ else
 }
 @code {
     [Parameter] public IEnumerable<Helper> Helpers { get; set; }
+    [Parameter] public EventCallback<Helper> DeleteHelper { get; set; }
+    [Parameter] public EventCallback<Helper> SelectHelper { get; set; }
     [Parameter] public string ErrorMessage { get; set; }
 }

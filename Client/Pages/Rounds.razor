@@ -15,34 +15,59 @@ else {
         <div class="column is-8">
             <RoundList ErrorMessage="@errorMessage"
                          Rounds="@rounds"
-                         />
+                         SelectRound="@SelectRound"
+                         DeleteRound="@DeleteRound" />
         </div>
     </div>
 
     <ModalYesNo Message="@modalMessage"
+                    OnNo="@CloseModal"
+                OnYes="@DeleteFromModal"
                 Show="@showModal"/>
 </div>
 }
 
 @code {
     private string errorMessage = "";
-    private IEnumerable<Activity> activitys;
-    private Activity activityToDelete;
+    private IEnumerable<Round> rounds;
+    private Round roundToDelete;
     private bool showModal;
     private string modalMessage = "";
 
-    private IEnumerable<Round> rounds;
-
     protected override async Task OnInitializedAsync()
     {
-        activitys = await http.GetFromJsonAsync<IEnumerable<Activity>>("api/activitys");
-        rounds = (from a in activitys where a.Round != null select a.Round).ToList();
+       rounds = await http.GetFromJsonAsync<IEnumerable<Round>>("api/rounds");
     }
 
     private async Task HandleRefresh()
     {
-        activitys = await http.GetFromJsonAsync<IEnumerable<Activity>>("api/activitys");
-        rounds = (from a in activitys where a.Round != null select a.Round).ToList();
+       rounds = await http.GetFromJsonAsync<IEnumerable<Round>>("api/rounds");
+    }
+
+        private void SelectRound(Round round)
+    {
+        navigation.NavigateTo($"/round/{round.Id}");
+    }
+
+    private void DeleteRound(Round round)
+    {
+        roundToDelete = round;
+        showModal = true;
+        modalMessage = $"Would you like to delete {roundToDelete.Name}";
+    }
+
+    private void CloseModal()
+    {
+        roundToDelete = null;
+        showModal = false;
+    }
+
+    private async Task DeleteFromModal()
+    {
+        await http.DeleteAsync($"api/rounds/{roundToDelete.Id}");
+        await HandleRefresh();
+        roundToDelete = null;
+        showModal = false;
     }
 
 

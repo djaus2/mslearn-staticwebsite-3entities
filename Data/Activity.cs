@@ -16,7 +16,6 @@ namespace Data
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
         public string Description { get; set; } = "";
     }
 
@@ -25,7 +24,14 @@ namespace Data
         public int Id { get; set; }
         public int  No { get; set; }
 
-        public string Name { get { return $"{No}"; } }
+        public string Name { get { return $"{No}"; } 
+            set {
+                int no;
+                if (int.TryParse(value, out no))
+                {
+                    No = no;
+                }
+            } }
 
         public string Description { get; set; } = "";
     }

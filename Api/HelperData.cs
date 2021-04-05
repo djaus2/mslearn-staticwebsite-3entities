@@ -16,12 +16,7 @@ namespace Api
 
     public class HelperData : IHelperData
     {
-        internal List<Helper> helpers { get; set; } 
-            = new List<Helper>
-        {
-                new Helper {Id = 1, Name ="Fred Nurk" },
-                new Helper {Id = 3, Name ="Harry Lime" },
-        };
+        internal static List<Helper> helpers { get; set; }
 
         private int GetRandomInt()
         {
@@ -50,19 +45,9 @@ namespace Api
             return Task.FromResult(true);
         }
 
-        internal static List<Helper> _helpers;
-        private bool hasInited = false;
-        private void InitData()
+        public Task<IEnumerable<Helper>> GetHelpers()
         {
-            helpers = _helpers;
-        }
-    public Task<IEnumerable<Helper>> GetHelpers()
-    {
-        if (!hasInited)
-        {
-            InitData();
-        }
-        return Task.FromResult(helpers.AsEnumerable());
+            return Task.FromResult(helpers.AsEnumerable());
         }
     }
 }

@@ -9,41 +9,74 @@
 else {
 <div class="content-container">
     <ListHeader Title="Helpers"
+		HandleAdd="@AddNewHelper"
                 HandleRefresh="@HandleRefresh"
                 RoutePath="/helpers" />
     <div class="columns is-multiline is-variable">
         <div class="column is-8">
             <HelperList ErrorMessage="@errorMessage"
                          Helpers="@helpers"
-                         />
+                         SelectHelper="@SelectHelper"
+                         DeleteHelper="@DeleteHelper" />
         </div>
     </div>
 
     <ModalYesNo Message="@modalMessage"
+                    OnNo="@CloseModal"
+                OnYes="@DeleteFromModal"
                 Show="@showModal"/>
 </div>
 }
 
 @code {
     private string errorMessage = "";
-    private IEnumerable<Activity> activitys;
-    private Activity activityToDelete;
+    private IEnumerable<Helper> helpers;
+    private Helper helperToDelete;
     private bool showModal;
     private string modalMessage = "";
 
-    private IEnumerable<Helper> helpers;
 
     protected override async Task OnInitializedAsync()
     {
-        activitys = await http.GetFromJsonAsync<IEnumerable<Activity>>("api/activitys");
-        helpers = (from a in activitys where a.Helper != null select a.Helper).ToList();
+        helpers = await http.GetFromJsonAsync<IEnumerable<Helper>>("api/helpers");
+
+    }
+
+    private void AddNewHelper()
+    {
+        navigation.NavigateTo("/helper/0");
     }
 
     private async Task HandleRefresh()
     {
-        activitys = await http.GetFromJsonAsync<IEnumerable<Activity>>("api/activitys");
-        helpers = (from a in activitys where a.Helper != null select a.Helper).ToList();
+        helpers = await http.GetFromJsonAsync<IEnumerable<Helper>>("api/helper");
     }
 
+    private void SelectHelper(Helper helper)
+    {
+        navigation.NavigateTo($"/helper/{helper.Id}");
+    }
 
+    private void DeleteHelper(Helper helper)
+    {
+        helperToDelete = helper;
+        showModal = true;
+        modalMessage = $"Would you like to delete {helperToDelete.Name}";
+    }
+
+    private void CloseModal()
+    {
+        helperToDelete = null;
+        showModal = false;
+    }
+
+    private async Task DeleteFromModal()
+    {
+        await http.DeleteAsync($"api/helpers/{helperToDelete.Id}");
+        navigation.NavigateTo("/activitys");
+        // The following refresh fails for some reason ??
+        await HandleRefresh();
+        helperToDelete = null;
+        showModal = false;
+    }
 }

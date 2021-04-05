@@ -1,0 +1,84 @@
+﻿@page "/round/{roundId:int}"
+@inject HttpClient http
+@inject NavigationManager navigation
+
+@if (roundx == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="card edit-detail">
+        <header class="card-header">
+            <p class="card-header-title">
+                @roundx.Name
+            </p>
+        </header>
+        <div class="card-content">
+            <div class="content">
+                @if (roundx.Id != 0)
+                {
+                    <label class="label" for="id">id</label>
+                    <input name="id"
+                           class="input"
+                           value="@roundx.Id"
+                           readonly="readonly" />
+                }
+                <InputDetail Name="name"
+                             Placeholder="Oranges"
+                             @bind-Value="roundx.Name" />
+                <InputDetail Name="description"
+                             Placeholder="box"
+                             @bind-Value="roundx.Description" />
+
+            </div>
+        </div>
+        <footer class="card-footer ">
+            <ButtonFooter Class="cancel-button"
+                          IconClasses="fas fa-undo"
+                          OnClick="@CancelHelper"
+                          Label="Cancel" />
+            <ButtonFooter Class="save-button"
+                          IconClasses="fas fa-save"
+                          OnClick="@Save"
+                          Label="Save" />
+        </footer>
+    </div>
+}
+
+@code {
+    private Round roundx;
+
+    [Parameter] public int RoundId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (RoundId == 0)
+        {
+            roundx = new Round();
+        }
+        else
+        {
+            var rounds = await http.GetFromJsonAsync<IEnumerable<Round>>("api/rounds");
+            roundx = rounds.First(p => p.Id == RoundId);
+        }
+    }
+
+    private void CancelHelper()
+    {
+        navigation.NavigateTo("/");
+    }
+
+    private async Task Save()
+    {
+        if (roundx.Id == 0)
+        {
+            await http.PostAsJsonAsync("api/rounds", roundx);
+        }
+        else
+        {
+            await http.PutAsJsonAsync("api/rounds", roundx);
+        }
+        navigation.NavigateTo("/rounds");
+    }
+}

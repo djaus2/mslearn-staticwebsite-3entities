@@ -1,0 +1,84 @@
+﻿@page "/helper/{helperId:int}"
+@inject HttpClient http
+@inject NavigationManager navigation
+
+@if (helperx == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="card edit-detail">
+        <header class="card-header">
+            <p class="card-header-title">
+                @helperx.Name
+            </p>
+        </header>
+        <div class="card-content">
+            <div class="content">
+                @if (helperx.Id != 0)
+                {
+                    <label class="label" for="id">id</label>
+                    <input name="id"
+                           class="input"
+                           value="@helperx.Id"
+                           readonly="readonly" />
+                }
+                <InputDetail Name="name"
+                             Placeholder="Oranges"
+                             @bind-Value="helperx.Name" />
+                <InputDetail Name="description"
+                             Placeholder="box"
+                             @bind-Value="helperx.Description" />
+
+            </div>
+        </div>
+        <footer class="card-footer ">
+            <ButtonFooter Class="cancel-button"
+                          IconClasses="fas fa-undo"
+                          OnClick="@CancelHelper"
+                          Label="Cancel" />
+            <ButtonFooter Class="save-button"
+                          IconClasses="fas fa-save"
+                          OnClick="@Save"
+                          Label="Save" />
+        </footer>
+    </div>
+}
+
+@code {
+    private Helper helperx;
+
+    [Parameter] public int HelperId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (HelperId == 0)
+        {
+            helperx = new Helper();
+        }
+        else
+        {
+            var helpers = await http.GetFromJsonAsync<IEnumerable<Helper>>("api/helpers");
+            helperx = helpers.First(p => p.Id == HelperId);
+        }
+    }
+
+    private void CancelHelper()
+    {
+        navigation.NavigateTo("/");
+    }
+
+    private async Task Save()
+    {
+        if (helperx.Id == 0)
+        {
+            await http.PostAsJsonAsync("api/helpers", helperx);
+        }
+        else
+        {
+            await http.PutAsJsonAsync("api/helpers", helperx);
+        }
+        navigation.NavigateTo("/helpers");
+    }
+}

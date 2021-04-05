@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+//using Blazored.LocalStorage;
+
+
 
 namespace Api
 {
@@ -16,36 +19,47 @@ namespace Api
 
     public class ActivityData : IActivityData
     {
-        private readonly List<Activity> activitys = new List<Activity>
+        private bool hasInited = false;
+        private List<Activity> activitys = null;
+        public ActivityData()
         {
-            new Activity
+            if (!hasInited)
             {
-                Id = 10,
-                Name = "Strawberries",
-                Description = "16oz package of fresh organic strawberries",
-                Quantity = 1,
-                Helper = new Helper {Id = 1, Name ="Fred Nurk" },
-                Round = new Round {Id=1, No=1}
-            },
-            new Activity
-            {
-                Id = 20,
-                Name = "Sliced bread",
-                Description = "Load of fresh sliced wheat bread",
-                Quantity = 1,
-                Helper = null,
-                Round = new Round {Id=2, No=2}
-            },
-            new Activity
-            {
-                Id = 30,
-                Name = "Apples",
-                Description = "Bag of 7 fresh McIntosh apples",
-                Quantity = 1,
-                Helper = new Helper {Id = 3, Name ="Harry Lime" },
-                Round = new Round {Id=3, No=3}
+                hasInited = true;
+                activitys = new List<Activity>
+                {
+                    new Activity
+                    {
+                        Id = 10,
+                        Name = "Strawberries",
+                        Description = "16oz package of fresh organic strawberries",
+                        Quantity = 1,
+                        Helper = new Helper {Id = 1, Name ="Fred Nurk" },
+                        Round = new Round {Id=1, No=1}
+                    },
+                    new Activity
+                    {
+                        Id = 20,
+                        Name = "Sliced bread",
+                        Description = "Load of fresh sliced wheat bread",
+                        Quantity = 1,
+                        Helper = null,
+                        Round = new Round {Id=2, No=2}
+                    },
+                    new Activity
+                    {
+                        Id = 30,
+                        Name = "Apples",
+                        Description = "Bag of 7 fresh McIntosh apples",
+                        Quantity = 1,
+                        Helper = new Helper {Id = 3, Name ="Harry Lime" },
+                        Round = new Round {Id=3, No=3}
+                    }
+                };
+                HelperData.helpers = (from a in activitys where a.Helper != null select a.Helper).ToList();
+                RoundData.rounds = (from a in activitys where a.Round != null select a.Round).ToList();
             }
-        };
+        }
 
         private int GetRandomInt()
         {
@@ -74,21 +88,15 @@ namespace Api
             return Task.FromResult(true);
         }
 
-        bool hasInited = false;
+        
         public void InitData()
         {
-            List<Helper>  helpers = (from a in activitys where a.Helper != null select a.Helper).ToList();
-           
-            List<Round> rounds = (from a in activitys where a.Round != null select a.Round).ToList();
-            HelperData._helpers = helpers;
+            //await localStorage.SetItemAsync("Helpers", helpers);
         }
 
         public Task<IEnumerable<Activity>> GetActivitys()
         {
-            if (!hasInited)
-            {
-                InitData();
-            }
+
             return Task.FromResult(activitys.AsEnumerable());
         }
     }
