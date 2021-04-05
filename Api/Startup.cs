@@ -10,6 +10,7 @@ namespace Api
         public override void Configure(IFunctionsHostBuilder builder)
         {
             builder.Services.AddSingleton<IActivityData, ActivityData>();
+            builder.Services.AddSingleton<IHelperData, HelperData>();
         }
     }
 }

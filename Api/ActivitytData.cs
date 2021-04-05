@@ -74,8 +74,21 @@ namespace Api
             return Task.FromResult(true);
         }
 
+        bool hasInited = false;
+        public void InitData()
+        {
+            List<Helper>  helpers = (from a in activitys where a.Helper != null select a.Helper).ToList();
+           
+            List<Round> rounds = (from a in activitys where a.Round != null select a.Round).ToList();
+            HelperData._helpers = helpers;
+        }
+
         public Task<IEnumerable<Activity>> GetActivitys()
         {
+            if (!hasInited)
+            {
+                InitData();
+            }
             return Task.FromResult(activitys.AsEnumerable());
         }
     }
