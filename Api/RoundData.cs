@@ -17,10 +17,13 @@ namespace Api
     public class RoundData : IRoundData
     {
         private  List<Round> rounds { get; set; }
-
-        public RoundData()
+        public List<Activity> activitys { get; set; }
+        private IStorage storage;
+        public RoundData(IStorage _storage)
         {
-            rounds = Storage.localStorage.Get<List<Round>>("rounds");
+            storage = _storage;
+            rounds = storage.GetRounds();
+            activitys = storage.GetActivitys();
         }
 
         private int GetRandomInt()

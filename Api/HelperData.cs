@@ -18,11 +18,12 @@ namespace Api
     public class HelperData : IHelperData
     {
         private List<Helper> helpers { get; set; }
+        private IStorage storage;
 
-
-        public HelperData()
-        { 
-            helpers = Storage.localStorage.Get<List<Helper>>("helpers");
+        public HelperData(IStorage _storage)
+        {
+            storage = _storage;
+            helpers = storage.GetHelpers();
         }
 
         private int GetRandomInt()

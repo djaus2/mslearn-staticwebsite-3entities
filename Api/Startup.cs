@@ -12,6 +12,7 @@ namespace Api
             builder.Services.AddSingleton<IActivityData, ActivityData>();
             builder.Services.AddSingleton<IHelperData, HelperData>();
             builder.Services.AddSingleton<IRoundData, RoundData>();
+            builder.Services.AddSingleton<IStorage, Storage>();
         }
     }
 }

@@ -7,15 +7,24 @@ using Hanssens.Net;
 
 namespace Api
 {
-    public static class Storage
+    public interface IStorage
     {
-        public static LocalStorage localStorage;
-        static Storage()
+        void Init();
+
+        List<Activity> GetActivitys();
+        List<Helper> GetHelpers();
+        List<Round> GetRounds();
+    }
+    public class Storage: IStorage
+    {
+        ILocalStorage localStorage { get; set; }
+
+        public Storage()
         {
             localStorage = new LocalStorage();
             Init();
         }
-        private static void Init()
+        public void Init()
         {
 
             var activitys = new List<Activity>
@@ -54,6 +63,22 @@ namespace Api
             var rounds = (from a in activitys where a.Round != null select a.Round).ToList();
             localStorage.Store<List<Helper>>("helpers", helpers);
             localStorage.Store<List<Round>>("rounds", rounds);
+        }
+
+
+        public List<Activity> GetActivitys()
+        {
+            return localStorage.Get<List<Activity>>("activitys");
+        }
+
+        public List<Helper> GetHelpers()
+        {
+            return localStorage.Get<List<Helper>>("helpers");
+        }
+
+        public List<Round> GetRounds()
+        {
+            return localStorage.Get<List<Round>>("rounds");
         }
     }
 }

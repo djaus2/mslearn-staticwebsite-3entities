@@ -20,10 +20,11 @@ namespace Api
     public class ActivityData : IActivityData
     {
         private List<Activity> activitys = null;
-        
-        public ActivityData()
+        private IStorage storage;
+        public ActivityData(IStorage _storage)
         {
-            activitys = Storage.localStorage.Get<List<Activity>>("activitys");
+            storage = _storage;
+            activitys = storage.GetActivitys();
         }
 
         private int GetRandomInt()
