@@ -16,6 +16,7 @@ urlFragment: "https://github.com/MicrosoftDocs/mslearn-staticwebapp-dotnet"
 - This version implements: 
   - 3 Entities: Activity, Helper and Round. A Helper volunteers for a activity which is for a specific round of athletics competition.
   - Entities are stored in a C# LocalStorage service.
+- Running Version on Azure [here](https://brave-wave-05ed2c51e.azurestaticapps.net/)
 
 <hr/>
 
