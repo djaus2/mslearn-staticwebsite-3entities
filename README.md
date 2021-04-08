@@ -8,6 +8,17 @@ description: "Apps that can be used with as a starting point for some MS Learn M
 urlFragment: "https://github.com/MicrosoftDocs/mslearn-staticwebapp-dotnet"
 ---
 
+# About this Repository
+
+- Start: The Azure Static Websites tutorial [here](https://docs.microsoft.com/en-us/learn/modules/publish-app-service-static-web-app-api-dotnet/)
+- Objective: Morph from the single entity app to multiple entity app using Entoty Framework Core
+- Functionality to be similar to Blazor Apps: [djaus2/EFBlazorBasics](https://github.com/djaus2/EFBlazorBasics) and [djaus2/EFBlazorBasics_Wasm](https://github.com/djaus2/EFBlazorBasics_Wasm) respostories.
+- This version implements: 
+  - 3 Entities: Activity, Helper and Round. A Helper volunteers for a activity which is for a specific round of athletics competition.
+  - Entities are stored in a C# LocalStorage service.
+
+<hr/>
+
 # Official Microsoft Sample
 
 Follow the hands-on tutorial to [publish a Blazor WebAssembly app and .NET API with Azure Static Web Apps](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api-dotnet/?WT.mc_id=mslearn_staticwebapp-github-aapowell).
