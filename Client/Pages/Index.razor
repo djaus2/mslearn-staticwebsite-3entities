@@ -1,5 +1,6 @@
 ﻿@page "/"
 @inject NavigationManager NavigationManager
+@inject HttpClient http
 
 @code {
     protected override void OnInitialized()
@@ -7,3 +8,4 @@
         NavigationManager.NavigateTo("/activitys");
     }
 }
+

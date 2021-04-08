@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-//using Blazored.LocalStorage;
+
 
 
 
@@ -19,46 +19,11 @@ namespace Api
 
     public class ActivityData : IActivityData
     {
-        private bool hasInited = false;
         private List<Activity> activitys = null;
+        
         public ActivityData()
         {
-            if (!hasInited)
-            {
-                hasInited = true;
-                activitys = new List<Activity>
-                {
-                    new Activity
-                    {
-                        Id = 10,
-                        Name = "Strawberries",
-                        Description = "16oz package of fresh organic strawberries",
-                        Quantity = 1,
-                        Helper = new Helper {Id = 1, Name ="Fred Nurk" },
-                        Round = new Round {Id=1, No=1}
-                    },
-                    new Activity
-                    {
-                        Id = 20,
-                        Name = "Sliced bread",
-                        Description = "Load of fresh sliced wheat bread",
-                        Quantity = 1,
-                        Helper = null,
-                        Round = new Round {Id=2, No=2}
-                    },
-                    new Activity
-                    {
-                        Id = 30,
-                        Name = "Apples",
-                        Description = "Bag of 7 fresh McIntosh apples",
-                        Quantity = 1,
-                        Helper = new Helper {Id = 3, Name ="Harry Lime" },
-                        Round = new Round {Id=3, No=3}
-                    }
-                };
-                HelperData.helpers = (from a in activitys where a.Helper != null select a.Helper).ToList();
-                RoundData.rounds = (from a in activitys where a.Round != null select a.Round).ToList();
-            }
+            activitys = Storage.localStorage.Get<List<Activity>>("activitys");
         }
 
         private int GetRandomInt()
@@ -88,15 +53,8 @@ namespace Api
             return Task.FromResult(true);
         }
 
-        
-        public void InitData()
+         public Task<IEnumerable<Activity>> GetActivitys()
         {
-            //await localStorage.SetItemAsync("Helpers", helpers);
-        }
-
-        public Task<IEnumerable<Activity>> GetActivitys()
-        {
-
             return Task.FromResult(activitys.AsEnumerable());
         }
     }

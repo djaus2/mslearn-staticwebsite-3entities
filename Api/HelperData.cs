@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hanssens.Net;
 
 namespace Api
 {
@@ -16,7 +17,13 @@ namespace Api
 
     public class HelperData : IHelperData
     {
-        internal static List<Helper> helpers { get; set; }
+        private List<Helper> helpers { get; set; }
+
+
+        public HelperData()
+        { 
+            helpers = Storage.localStorage.Get<List<Helper>>("helpers");
+        }
 
         private int GetRandomInt()
         {

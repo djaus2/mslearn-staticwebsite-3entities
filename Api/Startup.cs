@@ -1,6 +1,5 @@
 ﻿using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
-//using Blazored.LocalStorage;
 
 [assembly: FunctionsStartup(typeof(Api.Startup))]
 
@@ -13,7 +12,6 @@ namespace Api
             builder.Services.AddSingleton<IActivityData, ActivityData>();
             builder.Services.AddSingleton<IHelperData, HelperData>();
             builder.Services.AddSingleton<IRoundData, RoundData>();
-            //builder.Services.AddBlazoredLocalStorage();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Data
 {
@@ -6,10 +7,24 @@ namespace Data
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
+        public string Description
+        {
+            set { }
+            get
+            {
+                string HelperName =" ";
+                string RoundNo = " ";
+                if (Helper != null)
+                    HelperName = $"{Helper.Name}";
+                if (Round != null)
+                    RoundNo = $"{Round.No}";
+                return $"Helper:{HelperName}   -   Round:{RoundNo}"; }
+        }
         public int Quantity { get; set; }
 
+         //This can be null, its an Unassigned Task:
         public Helper Helper { get; set; }
+        [Required]
         public Round Round { get; set; }
     }
     public class Helper

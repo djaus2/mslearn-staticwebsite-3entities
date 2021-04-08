@@ -3,7 +3,7 @@
 @inject NavigationManager navigation
 
 <div class="content-container">
-    <ListHeader Title="My List"
+    <ListHeader Title="Activities"
                 HandleAdd="@AddNewActivity"
                 HandleRefresh="@HandleRefresh"
                 RoutePath="/activitys" />
@@ -35,8 +35,6 @@
     protected override async Task OnInitializedAsync()
     {
         activitys = await http.GetFromJsonAsync<IEnumerable<Activity>>("api/activitys");
-        helpers = (from a in activitys select a.Helper).ToList();
-        rounds = (from a in activitys select a.Round).ToList();
     }
 
     private void AddNewActivity()

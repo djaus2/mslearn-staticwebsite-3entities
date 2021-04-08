@@ -1,6 +1,7 @@
 ﻿@page "/activity/{activityId:int}"
 @inject HttpClient http
 @inject NavigationManager navigation
+@using Data
 
 @if (activity == null)
 {
@@ -8,6 +9,7 @@
 }
 else
 {
+
     <div class="card edit-detail">
         <header class="card-header">
             <p class="card-header-title">
@@ -45,6 +47,9 @@ else
                 </div>
             </div>
         </div>
+                   
+   
+                
         <footer class="card-footer ">
             <ButtonFooter Class="cancel-button"
                           IconClasses="fas fa-undo"
@@ -56,15 +61,45 @@ else
                           Label="Save" />
         </footer>
     </div>
+     <EditForm Model="@activity" >  
+        <br /><b><i>Select Helper</i></b>&nbsp;
+        <InputSelect @bind-Value="@strnHelperId" class="form-control">
+        @if (Helpers != null)
+        {
+            @foreach (Helper helpery in Helpers)
+            {
+                <option value="@helpery.Id">"@helpery.Name"</option>
+            }
+        }
+        </InputSelect>
+         <br /><b><i>Select Round</i></b>&nbsp;
+        <InputSelect @bind-Value="@strnRoundId" class="form-control">
+        @if (Rounds != null)
+        {
+            @foreach (Round round in Rounds)
+            {
+                <option value="@round.Id">"@round.No"</option>
+            }
+        }
+        </InputSelect>
+    </EditForm>
 }
 
 @code {
     private Activity activity;
+    private List<Helper> Helpers;
+    private List<Round> Rounds;
+    private int helperId  = -1;
+    private int roundId  = -1;
+    public string strnHelperId="";
+    public string strnRoundId="";
 
     [Parameter] public int ActivityId { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
+        Helpers = (await http.GetFromJsonAsync<IEnumerable<Helper>>("api/helpers")).ToList();
+        Rounds = (await http.GetFromJsonAsync<IEnumerable<Round>>("api/rounds")).ToList();
         if (ActivityId == 0)
         {
             activity = new Activity();
@@ -73,7 +108,19 @@ else
         {
             var activitys = await http.GetFromJsonAsync<IEnumerable<Activity>>("api/activitys");
             activity = activitys.First(p => p.Id == ActivityId);
+            if (activity.Helper != null)
+            {
+                helperId = activity.Helper.Id;
+                strnHelperId = $"{helperId}";
+            }
+            if (activity.Round != null)
+            {
+                roundId = activity.Round.Id;
+                strnRoundId = $"{roundId}";
+            }
         }
+
+
     }
 
     private void CancelActivity()
@@ -82,7 +129,21 @@ else
     }
 
     private async Task Save()
-    {
+    { 
+        if (int.TryParse(strnHelperId, out helperId))
+        {
+            activity.Helper = Helpers.Single(c => c.Id == helperId);
+        }
+       if (int.TryParse(strnRoundId, out roundId))
+        {
+            activity.Round = Rounds.Single(c => c.Id == roundId);
+        }
+        else
+        {
+            // Round is a required property
+            return;
+        }
+
         if (activity.Id == 0)
         {
             await http.PostAsJsonAsync("api/activitys", activity);

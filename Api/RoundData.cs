@@ -16,7 +16,12 @@ namespace Api
 
     public class RoundData : IRoundData
     {
-        internal static List<Round> rounds { get; set; }
+        private  List<Round> rounds { get; set; }
+
+        public RoundData()
+        {
+            rounds = Storage.localStorage.Get<List<Round>>("rounds");
+        }
 
         private int GetRandomInt()
         {

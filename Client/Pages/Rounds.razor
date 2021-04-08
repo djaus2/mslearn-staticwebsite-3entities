@@ -9,6 +9,7 @@
 else {
 <div class="content-container">
     <ListHeader Title="Rounds"
+                HandleAdd="@AddNewRound"
                 HandleRefresh="@HandleRefresh"
                 RoutePath="/rounds" />
     <div class="columns is-multiline is-variable">
@@ -37,6 +38,11 @@ else {
     protected override async Task OnInitializedAsync()
     {
        rounds = await http.GetFromJsonAsync<IEnumerable<Round>>("api/rounds");
+    }
+
+    private void AddNewRound()
+    {
+        navigation.NavigateTo("/round/0");
     }
 
     private async Task HandleRefresh()
