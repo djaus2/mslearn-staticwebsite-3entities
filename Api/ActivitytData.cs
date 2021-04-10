@@ -15,15 +15,30 @@ namespace Api
         Task<bool> DeleteActivity(int id);
         Task<IEnumerable<Activity>> GetActivitys();
         Task<Activity> UpdateActivity(Activity activity);
+        void UpdateActivitys();
     }
 
     public class ActivityData : IActivityData
     {
-        private List<Activity> activitys = null;
+        private List<Activity> _activitys = null;
+        private List<Activity> activitys
+        {
+            get {
+                if (storage.HasInitedActivitys())
+                    activitys = storage.GetActivitys();
+                return _activitys;
+            }
+            set { _activitys = value; }
+        }  
         private IStorage storage;
         public ActivityData(IStorage _storage)
         {
             storage = _storage;
+            activitys = storage.GetActivitys();
+        }
+
+        public void UpdateActivitys()
+        {
             activitys = storage.GetActivitys();
         }
 

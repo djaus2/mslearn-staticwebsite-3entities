@@ -9,8 +9,10 @@ namespace Api
 {
     public interface IStorage
     {
+        bool HasInitedActivitys();
+        bool HasInitedHelpers();
+        bool HasInitedRounds();
         void Init();
-
         List<Activity> GetActivitys();
         List<Helper> GetHelpers();
         List<Round> GetRounds();
@@ -19,6 +21,34 @@ namespace Api
     {
         ILocalStorage localStorage { get; set; }
 
+        private bool _HasInitedActivitys = false;
+
+        public bool HasInitedActivitys()
+        {
+            bool res = _HasInitedActivitys;
+            _HasInitedActivitys = false;
+            return res;
+        }
+
+        private bool _HasInitedHelpers = false;
+
+        public bool HasInitedHelpers()
+        {
+            bool res = _HasInitedHelpers;
+            _HasInitedHelpers = false;
+            return res;
+        }
+
+        private bool _HasInitedRounds = false;
+
+        public bool HasInitedRounds()
+        {
+            bool res = _HasInitedRounds;
+            _HasInitedRounds = false;
+            return res;
+        }
+
+
         public Storage()
         {
             localStorage = new LocalStorage();
@@ -26,7 +56,7 @@ namespace Api
         }
         public void Init()
         {
-
+            localStorage.Clear();
             var activitys = new List<Activity>
             {
                 new Activity
@@ -63,6 +93,9 @@ namespace Api
             var rounds = (from a in activitys where a.Round != null select a.Round).ToList();
             localStorage.Store<List<Helper>>("helpers", helpers);
             localStorage.Store<List<Round>>("rounds", rounds);
+            _HasInitedActivitys = true;
+            _HasInitedHelpers = true;
+            _HasInitedRounds = true;
         }
 
 

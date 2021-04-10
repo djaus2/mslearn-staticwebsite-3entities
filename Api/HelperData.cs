@@ -17,12 +17,28 @@ namespace Api
 
     public class HelperData : IHelperData
     {
-        private List<Helper> helpers { get; set; }
+        private List<Helper> _helpers = null;
+        private List<Helper> helpers
+        {
+            get
+            {
+                if (storage.HasInitedHelpers())
+                    _helpers = storage.GetHelpers();
+                return _helpers;
+            }
+            set { _helpers = value; }
+        }
+
         private IStorage storage;
 
         public HelperData(IStorage _storage)
         {
             storage = _storage;
+            helpers = storage.GetHelpers();
+        }
+
+        public void UpdateHelpers()
+        {
             helpers = storage.GetHelpers();
         }
 

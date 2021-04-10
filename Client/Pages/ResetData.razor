@@ -1,0 +1,12 @@
+﻿@page "/resetdata"
+@inject NavigationManager NavigationManager
+@inject HttpClient http
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        var res  = await http.GetFromJsonAsync<object>("api/app");
+        NavigationManager.NavigateTo("/activitys");
+    }
+}
+

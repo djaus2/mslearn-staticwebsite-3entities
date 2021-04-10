@@ -16,20 +16,34 @@ namespace Api
 
     public class RoundData : IRoundData
     {
-        private  List<Round> rounds { get; set; }
-        public List<Activity> activitys { get; set; }
+        private List<Round> _rounds = null;
+        private List<Round> rounds
+        {
+            get
+            {
+                if (storage.HasInitedRounds())
+                    _rounds = storage.GetRounds();
+                return _rounds;
+            }
+            set { _rounds = value; }
+        }
+
         private IStorage storage;
         public RoundData(IStorage _storage)
         {
             storage = _storage;
             rounds = storage.GetRounds();
-            activitys = storage.GetActivitys();
         }
 
         private int GetRandomInt()
         {
             var random = new Random();
             return random.Next(100, 1000);
+        }
+
+        public void UpdateRounds()
+        {
+            rounds = storage.GetRounds();
         }
 
         public Task<Round> AddRound(Round round)
