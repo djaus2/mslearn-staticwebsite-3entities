@@ -1,14 +1,32 @@
 # About this Repository
 
-- Start: The Azure Static Websites tutorial [here](https://docs.microsoft.com/en-us/learn/modules/publish-app-service-static-web-app-api-dotnet/)
-- Objective: Morph from the single entity app to multiple entity app using Entity Framework Core
-- Functionality to be similar to Blazor Apps: [djaus2/EFBlazorBasics](https://github.com/djaus2/EFBlazorBasics) and [djaus2/EFBlazorBasics_Wasm](https://github.com/djaus2/EFBlazorBasics_Wasm) respostories.
-- This version implements: 
+The starting point was the Azure Static Websites tutorial. The outcome of that was progressively extended with to implement a number of editable entities 
+rather than the one fixed entity. The ultimate aim is to havee the app backed by Entity Framework Core to access an Azure SQL dataabase. The functionality is meant to similar to that as in two Blazor apps which are available as repositories here. Each step inthis morhing process has been bookmarked as a separate branch. The main branch is always the latest and is what has been deployed to Azure for viewing.
+
+# This Version
+- This version (this bracnch) implements: 
   - 3 Entities: Activity, Helper and Round. A Helper volunteers for a activity which is for a specific round of athletics competition.
   - Entities are stored in a C# LocalStorage service.
-- Running Version of the **main** branch on Azure [here](https://brave-wave-05ed2c51e.azurestaticapps.net/)
+  - Can add, delete and modify the entities.
+  - Can reset the "pseudo" database to the initial entities.
+  - Nb: The app uses Scoped services so all users see the same data so please reset teh data if you give teh deployed verion a go , when done.
 
-<hr/>
+# Links
+- Start: The Azure Static Websites tutorial [here](https://docs.microsoft.com/en-us/learn/modules/publish-app-service-static-web-app-api-dotnet/)
+- [The Original Official/Microsoft Sample Repository](https://github.com/MicrosoftDocs/mslearn-staticwebapp-dotnet)
+- Functionality to be similar to Blazor Apps: [djaus2/EFBlazorBasics](https://github.com/djaus2/EFBlazorBasics) and [djaus2/EFBlazorBasics_Wasm](https://github.com/djaus2/EFBlazorBasics_Wasm) respostories.
 
-# The Original Official/Microsoft Sample Repository
-Got to [mslearn-staticwebapp-dotnet on GitHub](https://github.com/MicrosoftDocs/mslearn-staticwebapp-dotnet)
+# Branches of the Repository
+Each is a bookmark in this progression.
+
+- main - This branch
+- [Completed-tutorial](https://github.com/djaus2/mslearnstaticwebsite/tree/Completed-tutorial)
+  - After completing teh tutorial
+- [Rename-Products-to-Activitys](https://github.com/djaus2/mslearnstaticwebsite/tree/Rename-Products-to-Activitys)
+  - Renamed the Products entity as Activitys. Functionality etc unchanged otherwise.
+- [Activitys-helpers-rounds-Basic](https://github.com/djaus2/mslearnstaticwebsite/tree/Activitys-Helpers-Rounds-Basic)
+  - Added Hellpers and Round entities and as properties to Actiitys. Can list Activitys and get Helpers and Rounds on client from that.
+ - More to come
+
+
+
