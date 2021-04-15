@@ -33,7 +33,7 @@ Each is a bookmark in order of this progression.
 - [Tried-Chrissainty-localstorage](https://github.com/djaus2/mslearnstaticwebsite/tree/Tried-Chrissainty-localstorage)
   - This was a dead-end as it uses Javascript which made no sense on the server.
 - [Entities-as-a-csharp-local-storage-service](https://github.com/djaus2/mslearnstaticwebsite/tree/Entities-as-a-csharp-local-storage-service)
-  - Used the [LocalStorage Nuget Package from Julien Hanssens](https://github.com/hanssens/localstorage) which is C# app-centred storage.
+  - Used the [LocalStorage Nuget Package from Julien Hanssens](https://github.com/hanssens/localstorage) which is .NET-centred storage.
   - Meant to mimic a database: Can Add, delete and Update entities.
 - [Can-reset-data](https://github.com/djaus2/mslearnstaticwebsite/tree/Can-reset-data)
 - main - This branch
