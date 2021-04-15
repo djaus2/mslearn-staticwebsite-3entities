@@ -6,7 +6,7 @@ rather than the one fixed entity. The ultimate aim is to havee the app backed by
 # This Version
 - This version (this bracnch) implements: 
   - 3 Entities: Activity, Helper and Round. 
-    - A Helper volunteers for an activity which is for a specific round of athletics competition.
+    - **_A Helper volunteers for an activity which is for a specific round of athletics competition._**
   - Entities are stored in a C# LocalStorage service.
   - Can add, delete and modify the entities.
   - Can reset the "pseudo" database to the initial entities.
