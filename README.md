@@ -21,4 +21,4 @@ urlFragment: "https://github.com/MicrosoftDocs/mslearn-staticwebapp-dotnet"
 <hr/>
 
 # The Original Official Microsoft Sample Repository
-Got to [mslearn-staticwebapp-dotnet on GitHub)(https://github.com/MicrosoftDocs/mslearn-staticwebapp-dotnet)
+Got to [mslearn-staticwebapp-dotnet on GitHub](https://github.com/MicrosoftDocs/mslearn-staticwebapp-dotnet)
