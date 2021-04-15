@@ -36,7 +36,7 @@ Each is a bookmark in order of this progression.
   - Used the [LocalStorage Nuget Package from Julien Hanssens](https://github.com/hanssens/localstorage) which is .NET-centred storage.
   - Meant to mimic a database: Can Add, delete and Update entities.
 - [Can-reset-data](https://github.com/djaus2/mslearnstaticwebsite/tree/Can-reset-data)
-- main - This branch
+- main - This branch _(Same as the last branch)_
 
 
 
