@@ -21,12 +21,19 @@ Each is a bookmark in this progression.
 
 - main - This branch
 - [Completed-tutorial](https://github.com/djaus2/mslearnstaticwebsite/tree/Completed-tutorial)
-  - After completing teh tutorial
+  - After completing the tutorial
 - [Rename-Products-to-Activitys](https://github.com/djaus2/mslearnstaticwebsite/tree/Rename-Products-to-Activitys)
-  - Renamed the Products entity as Activitys. Functionality etc unchanged otherwise.
+  - Renamed the Products entity as Activitys. Functionality etc. Unchanged otherwise.
 - [Activitys-helpers-rounds-Basic](https://github.com/djaus2/mslearnstaticwebsite/tree/Activitys-Helpers-Rounds-Basic)
-  - Added Hellpers and Round entities and as properties to Actiitys. Can list Activitys and get Helpers and Rounds on client from that.
- - More to come
+  - Added Hellpers and Round entities as properties to Actiitys. Can list Activitys and get Helpers and Rounds on client from that.
+- [Add-helper_and-round-apis](https://github.com/djaus2/mslearnstaticwebsite/tree/Add-helper_and-round-apis)
+  - Implemented Helper and Round APIs and app pages
+- [Tried-Chrissainty-localstorage](https://github.com/djaus2/mslearnstaticwebsite/tree/Tried-Chrissainty-localstorage)
+  - This was a dead-end as is uses Javascript which made no sense on the server.
+- [Entities-as-a-csharp-local-storage-service](https://github.com/djaus2/mslearnstaticwebsite/tree/Entities-as-a-csharp-local-storage-service)
+  - Used the [LocalStorage Nuget Package from Julien Hanssens](https://github.com/hanssens/localstorage) which is app-central storage.
+  - Meant to mimic a database: Can Add, delete and Update entities.
+- [Can-reset-data](https://github.com/djaus2/mslearnstaticwebsite/tree/Can-reset-data)
 
 
 
