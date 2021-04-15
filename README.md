@@ -5,7 +5,8 @@ rather than the one fixed entity. The ultimate aim is to havee the app backed by
 
 # This Version
 - This version (this bracnch) implements: 
-  - 3 Entities: Activity, Helper and Round. A Helper volunteers for a activity which is for a specific round of athletics competition.
+  - 3 Entities: Activity, Helper and Round. 
+    - A Helper volunteers for an activity which is for a specific round of athletics competition.
   - Entities are stored in a C# LocalStorage service.
   - Can add, delete and modify the entities.
   - Can reset the "pseudo" database to the initial entities.
@@ -24,7 +25,7 @@ Each is a bookmark in order of this progression.
 - [Rename-Products-to-Activitys](https://github.com/djaus2/mslearnstaticwebsite/tree/Rename-Products-to-Activitys)
   - Renamed the Products entity as Activitys. Functionality etc. Unchanged otherwise.
 - [Activitys-helpers-rounds-Basic](https://github.com/djaus2/mslearnstaticwebsite/tree/Activitys-Helpers-Rounds-Basic)
-  - Added Hellpers and Round entities as properties to Actiitys. Can list Activitys and get Helpers and Rounds on client from that.
+  - Added Helpers and Round entities as properties to Activitys. Can list Activitys and get Helpers and Rounds on client from that.
 - [Add-helper_and-round-apis](https://github.com/djaus2/mslearnstaticwebsite/tree/Add-helper_and-round-apis)
   - Implemented Helper and Round APIs and app pages
 - [Tried-Chrissainty-localstorage](https://github.com/djaus2/mslearnstaticwebsite/tree/Tried-Chrissainty-localstorage)
