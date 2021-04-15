@@ -1,13 +1,3 @@
----
-page_type: sample
-languages:
-  - csharp
-products:
-  - azure functions
-description: "Apps that can be used with as a starting point for some MS Learn Modules."
-urlFragment: "https://github.com/MicrosoftDocs/mslearn-staticwebapp-dotnet"
----
-
 # About this Repository
 
 - Start: The Azure Static Websites tutorial [here](https://docs.microsoft.com/en-us/learn/modules/publish-app-service-static-web-app-api-dotnet/)
