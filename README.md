@@ -17,9 +17,8 @@ rather than the one fixed entity. The ultimate aim is to havee the app backed by
 - Functionality to be similar to Blazor Apps: [djaus2/EFBlazorBasics](https://github.com/djaus2/EFBlazorBasics) and [djaus2/EFBlazorBasics_Wasm](https://github.com/djaus2/EFBlazorBasics_Wasm) respostories.
 
 # Branches of the Repository
-Each is a bookmark in this progression.
+Each is a bookmark in order of this progression.
 
-- main - This branch
 - [Completed-tutorial](https://github.com/djaus2/mslearnstaticwebsite/tree/Completed-tutorial)
   - After completing the tutorial
 - [Rename-Products-to-Activitys](https://github.com/djaus2/mslearnstaticwebsite/tree/Rename-Products-to-Activitys)
@@ -34,6 +33,7 @@ Each is a bookmark in this progression.
   - Used the [LocalStorage Nuget Package from Julien Hanssens](https://github.com/hanssens/localstorage) which is app-central storage.
   - Meant to mimic a database: Can Add, delete and Update entities.
 - [Can-reset-data](https://github.com/djaus2/mslearnstaticwebsite/tree/Can-reset-data)
+ main - This branch
 
 
 
