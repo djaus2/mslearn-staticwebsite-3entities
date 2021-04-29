@@ -1,8 +1,7 @@
 {
-  "profiles": {
-    "Api": {
-      "commandName": "Project",
-      "commandLineArgs": "start --cors *"
-    }
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet"
   }
 }
