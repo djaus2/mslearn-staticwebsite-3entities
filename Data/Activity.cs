@@ -81,6 +81,7 @@ namespace Data
         [Column("Decsription")]
         public string Description { get; set; } = "";
 
-        public IList<Activity> Activitys { get; } = new List<Activity>();
+        //public List<Activity> Activitys { get; set; }
+        //public IList<Activity> Activitys { get; } = new List<Activity>();
     }
 }
