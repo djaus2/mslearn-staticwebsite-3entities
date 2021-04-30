@@ -15,6 +15,8 @@ namespace Api
     {
         public override void Configure(IFunctionsHostBuilder builder)
         {
+          
+
             builder.Services.AddSingleton<IActivityData, ActivityData>();
             builder.Services.AddSingleton<IHelperData, HelperData>();
             builder.Services.AddSingleton<IRoundData, RoundData>();
@@ -29,7 +31,6 @@ namespace Api
 
             //var yy = (string)connectionstrings["DefaultConnection"];
             string SqlConnection = connectionstrings.GetValue<string>("DefaultConnection");
-
             builder.Services.AddDbContext<ActivityHelpersContext>(options =>
                 options.UseSqlServer(SqlConnection));
         }

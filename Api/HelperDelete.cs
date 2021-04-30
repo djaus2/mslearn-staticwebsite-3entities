@@ -4,6 +4,10 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using Data;
+using System.Linq;
+using System;
 
 namespace Api
 {
@@ -25,13 +29,38 @@ namespace Api
             int helperId,
             ILogger log)
         {
-            var result = await helperData.DeleteHelper(helperId);
+            //var result = await helperData.DeleteHelper(helperId);
 
-            if (result)
+            //if (result)
+            //{
+            //    return new OkResult();
+            //}
+            //else
+            //{
+            //    return new BadRequestResult();
+            //}
+            try
             {
-                return new OkResult();
+                var allList = await _context.Helpers.ToListAsync();
+                var dateList = from l in allList where l.Id == helperId select l;
+                Helper helper = dateList.FirstOrDefault();
+                if (helper != null)
+                {
+                    _context.Remove(helper);
+                    var result = await _context.SaveChangesAsync();
+                    if (result == 1)
+                    {
+                        return new OkResult();
+                    }
+                    else
+                    {
+                        return new BadRequestResult();
+                    }
+                }
+                else
+                    return new BadRequestResult();
             }
-            else
+            catch (Exception)
             {
                 return new BadRequestResult();
             }

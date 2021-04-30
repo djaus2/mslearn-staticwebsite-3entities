@@ -54,7 +54,7 @@ namespace Api.Migrations
                         column: x => x.HelperId,
                         principalTable: "Helpers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_Activitys_Rounds_RoundId",
                         column: x => x.RoundId,

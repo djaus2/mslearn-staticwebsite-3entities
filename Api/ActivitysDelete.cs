@@ -4,6 +4,10 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using Data;
+using System.Linq;
+using System;
 
 namespace Api
 {
@@ -24,13 +28,36 @@ namespace Api
             int activityId,
             ILogger log)
         {
-            var result = await activityData.DeleteActivity(activityId);
-
-            if (result)
+            //var result1 = await activityData.DeleteActivity(activityId);
+            //if (result1 )
+            //{
+            //    return new OkResult();
+            //}
+            //else
+            //{
+            //    return new BadRequestResult();
+            //}
+            try
             {
-                return new OkResult();
-            }
-            else
+                var allList = await _context.Activitys.ToListAsync();
+                var dateList = from l in allList where l.Id == activityId select l;
+                Activity activity = dateList.FirstOrDefault();
+                if (activity != null)
+                {
+                    _context.Remove(activity);
+                    var result = await _context.SaveChangesAsync();
+                    if (result == 1)
+                    {
+                        return new OkResult();
+                    }
+                    else
+                    {
+                        return new BadRequestResult();
+                    }
+                }
+                else
+                    return new BadRequestResult();
+            } catch (Exception)
             {
                 return new BadRequestResult();
             }

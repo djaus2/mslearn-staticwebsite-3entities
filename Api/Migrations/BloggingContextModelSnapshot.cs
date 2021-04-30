@@ -92,7 +92,8 @@ namespace Api.Migrations
                     b.HasOne("Data.Round", "Round")
                         .WithMany("Activitys")
                         .HasForeignKey("RoundId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
