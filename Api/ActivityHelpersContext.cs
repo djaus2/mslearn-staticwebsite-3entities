@@ -6,9 +6,9 @@ using System.Text;
 
 namespace Api
 {
-    public class BloggingContext : DbContext
+    public class ActivityHelpersContext : DbContext
     {
-        public BloggingContext(DbContextOptions<BloggingContext> options)
+        public ActivityHelpersContext(DbContextOptions<ActivityHelpersContext> options)
             : base(options)
         { }
 

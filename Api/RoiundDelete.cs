@@ -10,9 +10,9 @@ namespace Api
     public class RoundsDelete
     {
         private readonly IRoundData roundData;
-        private readonly BloggingContext _context;
+        private readonly ActivityHelpersContext _context;
 
-        public RoundsDelete(BloggingContext context, IRoundData roundData)
+        public RoundsDelete(ActivityHelpersContext context, IRoundData roundData)
         {
             _context = context;
             this.roundData = roundData;

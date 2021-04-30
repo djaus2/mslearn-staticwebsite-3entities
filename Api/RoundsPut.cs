@@ -13,9 +13,9 @@ namespace Api
     public class RoundsPut
     {
         private readonly IRoundData roundData;
-        private readonly BloggingContext _context;
+        private readonly ActivityHelpersContext _context;
 
-        public RoundsPut(BloggingContext context, IRoundData roundData)
+        public RoundsPut(ActivityHelpersContext context, IRoundData roundData)
         {
             _context = context;
             this.roundData = roundData;

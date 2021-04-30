@@ -9,7 +9,7 @@ using System.IO;
 
 namespace Api
 {
-    public class BloggingContextFactory : IDesignTimeDbContextFactory<BloggingContext>
+    public class ActivityHelpersContextFactory : IDesignTimeDbContextFactory<ActivityHelpersContext>
     {
         //public Startup(IConfiguration configuration)
         //{
@@ -19,7 +19,7 @@ namespace Api
         //}
 
         public IConfiguration Configuration { get; }
-        public BloggingContext CreateDbContext(string[] args)
+        public ActivityHelpersContext CreateDbContext(string[] args)
         {
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -33,12 +33,12 @@ namespace Api
 
             //string SqlConnection = Environment.GetEnvironmentVariable("SqlConnectionString");
 
-            var optionsBuilder = new DbContextOptionsBuilder<BloggingContext>();
+            var optionsBuilder = new DbContextOptionsBuilder<ActivityHelpersContext>();
 
             //optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("SqlConnection"));
             optionsBuilder.UseSqlServer(
                     SqlConnection);
-            return new BloggingContext(optionsBuilder.Options);
+            return new ActivityHelpersContext(optionsBuilder.Options);
         }
     }
 }

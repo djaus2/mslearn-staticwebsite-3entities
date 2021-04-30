@@ -11,9 +11,9 @@ namespace Api
     public class ActivitysGet
     {
         private readonly IActivityData activityData;
-        private readonly BloggingContext _context;
+        private readonly ActivityHelpersContext _context;
 
-        public ActivitysGet(BloggingContext context, IActivityData activityData)
+        public ActivitysGet(ActivityHelpersContext context, IActivityData activityData)
         {
             this.activityData = activityData;
             _context = context;

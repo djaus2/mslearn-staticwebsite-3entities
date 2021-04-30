@@ -30,7 +30,7 @@ namespace Api
             //var yy = (string)connectionstrings["DefaultConnection"];
             string SqlConnection = connectionstrings.GetValue<string>("DefaultConnection");
 
-            builder.Services.AddDbContext<BloggingContext>(options =>
+            builder.Services.AddDbContext<ActivityHelpersContext>(options =>
                 options.UseSqlServer(SqlConnection));
         }
     }

@@ -13,9 +13,9 @@ namespace Api
     public class ActivitysPut
     {
         private readonly IActivityData activityData;
-        private readonly BloggingContext _context;
+        private readonly ActivityHelpersContext _context;
 
-        public ActivitysPut(BloggingContext context, IActivityData activityData)
+        public ActivitysPut(ActivityHelpersContext context, IActivityData activityData)
         {
             this.activityData = activityData;
             _context = context;

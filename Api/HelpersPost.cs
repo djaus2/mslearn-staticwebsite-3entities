@@ -13,9 +13,9 @@ namespace Api
     public class HelpersPost
     {
         private readonly IHelperData helperData;
-        private readonly BloggingContext _context;
+        private readonly ActivityHelpersContext _context;
 
-        public HelpersPost(BloggingContext context, IHelperData helperData)
+        public HelpersPost(ActivityHelpersContext context, IHelperData helperData)
         {
             this.helperData = helperData;
             _context = context;

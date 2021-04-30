@@ -11,9 +11,9 @@ namespace Api
     public class RoundsGet
     {
         private readonly IRoundData roundData;
-        private readonly BloggingContext _context;
+        private readonly ActivityHelpersContext _context;
 
-        public RoundsGet(BloggingContext context, IRoundData roundData)
+        public RoundsGet(ActivityHelpersContext context, IRoundData roundData)
         {
             _context = context;
             this.roundData = roundData;

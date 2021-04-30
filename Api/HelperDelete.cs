@@ -10,10 +10,10 @@ namespace Api
     public class HelpersDelete
     {
         private readonly IHelperData helperData;
-        private readonly BloggingContext _context;
+        private readonly ActivityHelpersContext _context;
 
 
-        public HelpersDelete(BloggingContext context, IHelperData helperData)
+        public HelpersDelete(ActivityHelpersContext context, IHelperData helperData)
         {
             this.helperData = helperData;
             _context = context;
