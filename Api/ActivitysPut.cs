@@ -13,10 +13,12 @@ namespace Api
     public class ActivitysPut
     {
         private readonly IActivityData activityData;
+        private readonly BloggingContext _context;
 
-        public ActivitysPut(IActivityData activityData)
+        public ActivitysPut(BloggingContext context, IActivityData activityData)
         {
             this.activityData = activityData;
+            _context = context;
         }
 
         [FunctionName("ActivitysPut")]

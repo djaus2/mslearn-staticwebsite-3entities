@@ -13,10 +13,12 @@ namespace Api
     public class HelpersPut
     {
         private readonly IHelperData helperData;
+        private readonly BloggingContext _context;
 
-        public HelpersPut(IHelperData helperData)
+        public HelpersPut(BloggingContext context, IHelperData helperData)
         {
             this.helperData = helperData;
+            _context = context;
         }
 
         [FunctionName("HelpersPut")]

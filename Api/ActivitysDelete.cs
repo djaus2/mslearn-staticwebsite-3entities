@@ -10,10 +10,12 @@ namespace Api
     public class ActivitysDelete
     {
         private readonly IActivityData activityData;
+        private readonly BloggingContext _context;
 
-        public ActivitysDelete(IActivityData activityData)
+        public ActivitysDelete(BloggingContext context, IActivityData activityData)
         {
             this.activityData = activityData;
+            _context = context;
         }
 
         [FunctionName("ActivitysDelete")]

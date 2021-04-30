@@ -13,9 +13,11 @@ namespace Api
     public class RoundsPost
     {
         private readonly IRoundData roundData;
+        private readonly BloggingContext _context;
 
-        public RoundsPost(IRoundData roundData)
+        public RoundsPost(BloggingContext context, IRoundData roundData)
         {
+            _context = context;
             this.roundData = roundData;
         }
 

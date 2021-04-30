@@ -31,8 +31,7 @@ namespace Data
                     RoundNo = $"{Round.No}";
                 return $"Helper:{HelperName}   -   Round:{RoundNo}"; }
         }
-
-        [Column("Quantity")]
+		[Column("Quantity")]
         public int Quantity { get; set; }
 
         //This can be null, its an Unassigned Task:
@@ -52,8 +51,7 @@ namespace Data
         [Column("Name")]
         [Required]
         public string Name { get; set; }
-
-        [Column("Decsription")]
+		[Column("Decsription")]
         public string Description { get; set; } = "";
     }
 
@@ -62,7 +60,6 @@ namespace Data
         [Key]
         [Column("Id")]
         public int Id { get; set; }
-
         [Column("No")]
         [Required]
         public int  No { get; set; }
@@ -80,8 +77,5 @@ namespace Data
 
         [Column("Decsription")]
         public string Description { get; set; } = "";
-
-        //public List<Activity> Activitys { get; set; }
-        //public IList<Activity> Activitys { get; } = new List<Activity>();
     }
 }

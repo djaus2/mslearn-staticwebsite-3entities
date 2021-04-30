@@ -10,10 +10,13 @@ namespace Api
     public class HelpersDelete
     {
         private readonly IHelperData helperData;
+        private readonly BloggingContext _context;
 
-        public HelpersDelete(IHelperData helperData)
+
+        public HelpersDelete(BloggingContext context, IHelperData helperData)
         {
             this.helperData = helperData;
+            _context = context;
         }
 
         [FunctionName("HelpersDelete")]
