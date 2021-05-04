@@ -15,16 +15,28 @@ namespace Api
     {
         public override void Configure(IFunctionsHostBuilder builder)
         {
-          
 
-            var config = new ConfigurationBuilder()
+            var config1 = new ConfigurationBuilder()
+                .AddEnvironmentVariables()
+                .Build();
+
+            string SqlConnection = config1.GetValue<string>("DefaultConnection");
+
+            if (string.IsNullOrEmpty(SqlConnection))
+            {
+                var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("local.settings.json", optional: true, reloadOnChange: true)
+                .AddEnvironmentVariables()
                 .Build();
-            var connectionstrings = config.GetSection("ConnectionStrings");
 
-            //var yy = (string)connectionstrings["DefaultConnection"];
-            string SqlConnection = connectionstrings.GetValue<string>("DefaultConnection");
+            
+     
+                var connectionstrings = config.GetSection("ConnectionStrings");
+
+                //var yy = (string)connectionstrings["DefaultConnection"];
+                SqlConnection = connectionstrings.GetValue<string>("DefaultConnection");
+            }
             builder.Services.AddDbContext<ActivityHelpersContext>(options =>
                 options.UseSqlServer(SqlConnection));
         }
