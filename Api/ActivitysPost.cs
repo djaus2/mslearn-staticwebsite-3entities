@@ -34,6 +34,9 @@ namespace Api
             var helpers = _context.Helpers;
             var rounds = _context.Rounds;
             var activitys = _context.Activitys;
+
+            _context.Attach(activity.Helper); // <-- new
+            _context.Attach(activity.Round);  // <-- new
             //Activity activity = acts.Single();
             //activity.Helper = activity1.Helper;
             //activity.Name = activity1.Name;
