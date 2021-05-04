@@ -10,13 +10,11 @@ namespace Api
 {
     public class HelpersGet
     {
-        private readonly IHelperData helperData;
         private readonly ActivityHelpersContext _context;
 
-        public HelpersGet(ActivityHelpersContext context, IHelperData helperData)
+        public HelpersGet(ActivityHelpersContext context)
         {
             _context = context;
-            this.helperData = helperData;
         }
 
         [FunctionName("HelpersGet")]

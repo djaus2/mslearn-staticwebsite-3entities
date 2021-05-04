@@ -10,17 +10,16 @@ using Microsoft.EntityFrameworkCore;
 using Data;
 using System.Linq;
 using System;
+using Newtonsoft.Json;
 
 namespace Api
 {
     public class HelpersPost
     {
-        private readonly IHelperData helperData;
         private readonly ActivityHelpersContext _context;
 
-        public HelpersPost(ActivityHelpersContext context, IHelperData helperData)
+        public HelpersPost(ActivityHelpersContext context)
         {
-            this.helperData = helperData;
             _context = context;
         }
 
@@ -30,10 +29,12 @@ namespace Api
             ILogger log)
         {
             var body = await new StreamReader(req.Body).ReadToEndAsync();
-            var helper = JsonSerializer.Deserialize<Helper>(body, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+            //var helper = JsonSerializer.Deserialize<Helper>(body, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+            var helper = JsonConvert.DeserializeObject<Helper>(body);
 
-            var newHelper = await helperData.AddHelper(helper);
-            return new OkObjectResult(newHelper);
+            _context.Add(helper);
+            await _context.SaveChangesAsync();
+            return new OkObjectResult(helper);
         }
     }
 }

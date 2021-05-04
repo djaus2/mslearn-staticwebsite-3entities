@@ -1,23 +1,39 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AzureFunctionsVersion>v3</AzureFunctionsVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="LocalStorage" Version="2.1.0" />
-    <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.0.0" />
-	<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.3">
-		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		<PrivateAssets>all</PrivateAssets>
-	</PackageReference>
-	<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.3" />
-	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.3">
-		<PrivateAssets>all</PrivateAssets>
-		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	</PackageReference>
-    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.7" />
+    <Compile Remove="ActivitytData.cs" />
+    <Compile Remove="AppGet.cs" />
+    <Compile Remove="HelperData.cs" />
+    <Compile Remove="RoundData.cs" />
+    <Compile Remove="Storage.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ActivitytData.cs" />
+    <None Include="AppGet.cs" />
+    <None Include="HelperData.cs" />
+    <None Include="RoundData.cs" />
+    <None Include="Storage.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.14" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.14" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.14">
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		  <PrivateAssets>all</PrivateAssets>
+	  </PackageReference>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.14">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ActivityHelpers\ActivityHelpers.csproj" />
     <ProjectReference Include="..\Data\Data.csproj" />
   </ItemGroup>
   <ItemGroup>
@@ -29,4 +45,6 @@
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </None>
   </ItemGroup>
+
+  
 </Project>

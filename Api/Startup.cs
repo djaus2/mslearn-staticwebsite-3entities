@@ -17,15 +17,9 @@ namespace Api
         {
           
 
-            builder.Services.AddSingleton<IActivityData, ActivityData>();
-            builder.Services.AddSingleton<IHelperData, HelperData>();
-            builder.Services.AddSingleton<IRoundData, RoundData>();
-            builder.Services.AddSingleton<IStorage, Storage>();
-
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("local.settings.json", optional: true, reloadOnChange: true)
-                .AddEnvironmentVariables()
                 .Build();
             var connectionstrings = config.GetSection("ConnectionStrings");
 

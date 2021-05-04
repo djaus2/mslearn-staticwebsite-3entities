@@ -10,13 +10,11 @@ namespace Api
 {
     public class RoundsGet
     {
-        private readonly IRoundData roundData;
         private readonly ActivityHelpersContext _context;
 
-        public RoundsGet(ActivityHelpersContext context, IRoundData roundData)
+        public RoundsGet(ActivityHelpersContext context)
         {
             _context = context;
-            this.roundData = roundData;
         }
 
         [FunctionName("RoundsGet")]

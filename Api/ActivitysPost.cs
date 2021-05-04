@@ -10,17 +10,16 @@ using Microsoft.EntityFrameworkCore;
 using Data;
 using System.Linq;
 using System;
+using Newtonsoft.Json;
 
 namespace Api
 {
     public class ActivitysPost
     {
-        private readonly IActivityData activityData;
         private readonly ActivityHelpersContext _context;
 
-        public ActivitysPost(ActivityHelpersContext context, IActivityData activityData)
+        public ActivitysPost(ActivityHelpersContext context)
         {
-            this.activityData = activityData;
             _context = context;
         }
 
@@ -30,10 +29,19 @@ namespace Api
             ILogger log)
         {
             var body = await new StreamReader(req.Body).ReadToEndAsync();
-            var activity = JsonSerializer.Deserialize<Activity>(body, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+            var activity = JsonConvert.DeserializeObject<Activity>(body);
 
-            var newActivity = await activityData.AddActivity(activity);
-            return new OkObjectResult(newActivity);
+            var helpers = _context.Helpers;
+            var rounds = _context.Rounds;
+            var activitys = _context.Activitys;
+            //Activity activity = acts.Single();
+            //activity.Helper = activity1.Helper;
+            //activity.Name = activity1.Name;
+            //activity.Quantity = activity1.Quantity;
+            //activity.Round = activity1.Round;
+            _context.Add(activity);
+            await _context.SaveChangesAsync();
+            return new OkObjectResult(activity);
         }
     }
 }

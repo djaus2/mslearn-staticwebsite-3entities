@@ -10,12 +10,10 @@ namespace Api
 {
     public class ActivitysGet
     {
-        private readonly IActivityData activityData;
         private readonly ActivityHelpersContext _context;
 
-        public ActivitysGet(ActivityHelpersContext context, IActivityData activityData)
+        public ActivitysGet(ActivityHelpersContext context)
         {
-            this.activityData = activityData;
             _context = context;
         }
 

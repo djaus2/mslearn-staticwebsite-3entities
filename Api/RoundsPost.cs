@@ -10,18 +10,17 @@ using Microsoft.EntityFrameworkCore;
 using Data;
 using System.Linq;
 using System;
+using Newtonsoft.Json;
 
 namespace Api
 {
     public class RoundsPost
     {
-        private readonly IRoundData roundData;
         private readonly ActivityHelpersContext _context;
 
-        public RoundsPost(ActivityHelpersContext context, IRoundData roundData)
+        public RoundsPost(ActivityHelpersContext context)
         {
             _context = context;
-            this.roundData = roundData;
         }
 
         [FunctionName("RoundsPost")]
@@ -30,10 +29,11 @@ namespace Api
             ILogger log)
         {
             var body = await new StreamReader(req.Body).ReadToEndAsync();
-            var round = JsonSerializer.Deserialize<Round>(body, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+            var round = JsonConvert.DeserializeObject<Round>(body);
 
-            var newRound = await roundData.AddRound(round);
-            return new OkObjectResult(newRound);
+            _context.Add(round);
+            await _context.SaveChangesAsync();
+            return new OkObjectResult(round);
         }
     }
 }

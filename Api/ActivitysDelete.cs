@@ -13,12 +13,10 @@ namespace Api
 {
     public class ActivitysDelete
     {
-        private readonly IActivityData activityData;
         private readonly ActivityHelpersContext _context;
 
-        public ActivitysDelete(ActivityHelpersContext context, IActivityData activityData)
+        public ActivitysDelete(ActivityHelpersContext context)
         {
-            this.activityData = activityData;
             _context = context;
         }
 

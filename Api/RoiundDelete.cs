@@ -13,13 +13,11 @@ namespace Api
 {
     public class RoundsDelete
     {
-        private readonly IRoundData roundData;
         private readonly ActivityHelpersContext _context;
 
-        public RoundsDelete(ActivityHelpersContext context, IRoundData roundData)
+        public RoundsDelete(ActivityHelpersContext context)
         {
             _context = context;
-            this.roundData = roundData;
         }
 
         [FunctionName("RoundsDelete")]

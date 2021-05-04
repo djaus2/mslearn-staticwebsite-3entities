@@ -8,9 +8,12 @@ namespace Data
 {
     public class Activity
     {
+        //        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         [Key]
         [Column("Id")]
-        public int Id { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; } 
 
         [Column("Task")]
         [Required]
@@ -46,6 +49,7 @@ namespace Data
     {
         [Key]
         [Column("Id")]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Column("Name")]
@@ -59,6 +63,7 @@ namespace Data
     {
         [Key]
         [Column("Id")]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Column("No")]
         [Required]

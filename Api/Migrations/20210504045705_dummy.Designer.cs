@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api.Migrations
 {
     [DbContext(typeof(ActivityHelpersContext))]
-    [Migration("20210429072133_FirstAqi")]
-    partial class FirstAqi
+    [Migration("20210504045705_dummy")]
+    partial class dummy
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
+                .HasAnnotation("ProductVersion", "3.1.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -26,18 +26,23 @@ namespace Api.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Id")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("HelperId");
+                    b.Property<int?>("HelperId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnName("Task");
+                        .HasColumnName("Task")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantity")
-                        .HasColumnName("Quantity");
+                        .HasColumnName("Quantity")
+                        .HasColumnType("int");
 
-                    b.Property<int>("RoundId");
+                    b.Property<int>("RoundId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -53,14 +58,17 @@ namespace Api.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Id")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description")
-                        .HasColumnName("Decsription");
+                        .HasColumnName("Decsription")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnName("Name");
+                        .HasColumnName("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -72,13 +80,16 @@ namespace Api.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Id")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description")
-                        .HasColumnName("Decsription");
+                        .HasColumnName("Decsription")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("No")
-                        .HasColumnName("No");
+                        .HasColumnName("No")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -92,9 +103,10 @@ namespace Api.Migrations
                         .HasForeignKey("HelperId");
 
                     b.HasOne("Data.Round", "Round")
-                        .WithMany("Activitys")
+                        .WithMany()
                         .HasForeignKey("RoundId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
