@@ -16,11 +16,11 @@ namespace Api
         public override void Configure(IFunctionsHostBuilder builder)
         {
 
-            //var config1 = new ConfigurationBuilder()
-            //    .AddEnvironmentVariables()
-            //    .Build();
+            var config1 = new ConfigurationBuilder()
+                .AddEnvironmentVariables()
+                .Build();
 
-            string SqlConnection = ""; // config1.GetValue<string>("DefaultConnection");
+            string SqlConnection =  config1.GetValue<string>("DefaultConnection");
 
             if (string.IsNullOrEmpty(SqlConnection))
             {
