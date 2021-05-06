@@ -6,12 +6,14 @@
   <ItemGroup>
     <Compile Remove="ActivitytData.cs" />
     <Compile Remove="HelperData.cs" />
+    <Compile Remove="PeriodTrigger.cs" />
     <Compile Remove="RoundData.cs" />
     <Compile Remove="Storage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ActivitytData.cs" />
     <None Include="HelperData.cs" />
+    <None Include="PeriodTrigger.cs" />
     <None Include="RoundData.cs" />
     <None Include="Storage.cs" />
   </ItemGroup>
