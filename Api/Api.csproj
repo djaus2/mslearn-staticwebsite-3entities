@@ -5,14 +5,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="ActivitytData.cs" />
-    <Compile Remove="AppGet.cs" />
     <Compile Remove="HelperData.cs" />
     <Compile Remove="RoundData.cs" />
     <Compile Remove="Storage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ActivitytData.cs" />
-    <None Include="AppGet.cs" />
     <None Include="HelperData.cs" />
     <None Include="RoundData.cs" />
     <None Include="Storage.cs" />

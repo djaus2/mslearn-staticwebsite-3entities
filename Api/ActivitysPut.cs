@@ -33,6 +33,9 @@ namespace Api
 
             if (activity != null)
             {
+                if (activity.Helper != null)
+                    _context.Attach(activity.Helper); // <-- new
+                _context.Attach(activity.Round);  // <-- new
                 _context.Update(activity);
                 var result = await _context.SaveChangesAsync();
                 if (result == 1)

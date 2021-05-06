@@ -129,12 +129,12 @@ else
     }
 
     private async Task Save()
-    { 
+    {
         if (int.TryParse(strnHelperId, out helperId))
         {
             activity.Helper = Helpers.Single(c => c.Id == helperId);
         }
-       if (int.TryParse(strnRoundId, out roundId))
+        if (int.TryParse(strnRoundId, out roundId))
         {
             activity.Round = Rounds.Single(c => c.Id == roundId);
         }
@@ -147,6 +147,7 @@ else
         if (activity.Id == 0)
         {
             await http.PostAsJsonAsync("api/activitys", activity);
+           
         }
         else
         {

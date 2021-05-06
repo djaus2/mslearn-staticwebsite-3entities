@@ -19,7 +19,6 @@ namespace Api
     }
     public class Storage: IStorage
     {
-        ILocalStorage localStorage { get; set; }
 
         private bool _HasInitedActivitys = false;
 

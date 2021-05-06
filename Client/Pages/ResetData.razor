@@ -2,10 +2,52 @@
 @inject NavigationManager NavigationManager
 @inject HttpClient http
 
-@code {
+<div class="content-title-group">
+    <NavLink >
+        <h2 class="title">Restore Database</h2>
+    </NavLink>
+</div>
+
+@if (@start)
+{
+<h1>Clearing Database</h1>
+}
+else
+{
+<h1>Cleared Database</h1>
+<br />
+<h2>Now add some new Enities</h2>
+<br/>
+<button  @onclick="Add3"  >Add 3 Activitys</button>
+}
+
+
+@code{ 
+    bool start = true;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+
+        if(firstRender)
+        {
+            await Task.Delay(3000);
+            start = false;
+            StateHasChanged();
+        }
+    }
+
     protected override async Task OnInitializedAsync()
     {
-        var res  = await http.GetFromJsonAsync<object>("api/app");
+        // This doesn't reurn for some reson ?? Hence delay above.
+        var res = await http.GetFromJsonAsync<object>("api/app");
+    }
+
+    protected async Task Add3()
+    {
+        await http.PostAsync("api/activitys", new StringContent("{'Name':'Starter','Quantity':1,'Round':{'No':1,'Description':'AVSL'},'Helper':{'Name':'Johnny Jumper','Description':'Helpfu'}}"));
+        await http.PostAsync("api/activitys", new StringContent("{'Name':'Timekeeping','Quantity':8,'Round':{'No':2,'Description':'LA'},'Helper':{'Name':'Mary Louise','Description':'Organised'}}"));
+        await http.PostAsync("api/activitys", new StringContent("{'Name':'Shot Put','Quantity':3,'Round':{'No':1,'Description':'Champs'},'Helper':{'Name':'Fred Nurk','Description':'Useless'}}"));
         NavigationManager.NavigateTo("/activitys");
     }
 }
