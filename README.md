@@ -12,7 +12,7 @@ rather than the one fixed entity. The ultimate aim is to have the app backed by 
   - Entities are stored in a C# LocalStorage service.
   - Can add, delete and modify the entities.
   - Can reset the "pseudo" database to the initial entities.
-  - Nb: The app uses Scoped services so all users see the same data so please reset teh data if you give teh deployed verion a go , when done.
+  - Nb: The app uses Scoped services so all users see the same data so please reset teh data if you give the deployed verion a go , when done.
 
 # Links
 - Start: The Azure Static Websites tutorial [here](https://docs.microsoft.com/en-us/learn/modules/publish-app-service-static-web-app-api-dotnet/)
