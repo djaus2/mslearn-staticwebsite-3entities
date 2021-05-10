@@ -41,7 +41,7 @@ namespace Api
 
                 var round = _context.Rounds
                     .Where(l => l.Id == roundId)
-                    .Include(l => l.Activitys)
+                    //.Include(l => l.Activitys)
                     .FirstOrDefault();
 
                 if (round != null)

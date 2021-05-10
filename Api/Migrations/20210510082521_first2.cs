@@ -2,7 +2,7 @@
 
 namespace Api.Migrations
 {
-    public partial class dummy : Migration
+    public partial class first2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

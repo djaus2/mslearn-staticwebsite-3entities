@@ -59,8 +59,8 @@ namespace Data
 		[Column("Decsription")]
         public string Description { get; set; } = "";
 
-        [JsonIgnore]
-        public ICollection<Activity> Activitys { get; set; }
+        //[JsonIgnore]
+        //public ICollection<Activity> Activitys { get; set; }
     }
 
     public class Round
@@ -87,7 +87,7 @@ namespace Data
         [Column("Decsription")]
         public string Description { get; set; } = "";
 
-        [JsonIgnore]
-        public ICollection<Activity> Activitys { get; set; }
+        //[JsonIgnore]
+        //public ICollection<Activity> Activitys { get; set; }
     }
 }

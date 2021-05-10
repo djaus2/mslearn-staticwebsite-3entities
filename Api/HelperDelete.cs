@@ -31,7 +31,7 @@ namespace Api
             {
                 var helper = _context.Helpers
                      .Where(l => l.Id == helperId)
-                     .Include(l => l.Activitys)
+                     //.Include(l => l.Activitys)
                      .FirstOrDefault();
                 if (helper != null)
                 {
