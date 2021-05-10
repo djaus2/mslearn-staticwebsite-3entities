@@ -8,11 +8,8 @@ namespace Data
 {
     public class Activity
     {
-        //        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-
         [Key]
         [Column("Id")]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; } 
 
         [Column("Task")]
@@ -50,7 +47,6 @@ namespace Data
     {
         [Key]
         [Column("Id")]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Column("Name")]
@@ -59,15 +55,14 @@ namespace Data
 		[Column("Decsription")]
         public string Description { get; set; } = "";
 
-        //[JsonIgnore]
-        //public ICollection<Activity> Activitys { get; set; }
+        [JsonIgnore]
+        public ICollection<Activity> Activitys { get; set; }
     }
 
     public class Round
     {
         [Key]
         [Column("Id")]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Column("No")]
         [Required]
@@ -87,7 +82,7 @@ namespace Data
         [Column("Decsription")]
         public string Description { get; set; } = "";
 
-        //[JsonIgnore]
-        //public ICollection<Activity> Activitys { get; set; }
+        [JsonIgnore]
+        public ICollection<Activity> Activitys { get; set; }
     }
 }

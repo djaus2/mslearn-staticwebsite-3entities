@@ -97,11 +97,11 @@ namespace Api.Migrations
             modelBuilder.Entity("Data.Activity", b =>
                 {
                     b.HasOne("Data.Helper", "Helper")
-                        .WithMany()
+                        .WithMany("Activitys")
                         .HasForeignKey("HelperId");
 
                     b.HasOne("Data.Round", "Round")
-                        .WithMany()
+                        .WithMany("Activitys")
                         .HasForeignKey("RoundId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

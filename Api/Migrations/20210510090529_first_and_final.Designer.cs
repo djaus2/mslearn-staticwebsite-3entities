@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api.Migrations
 {
     [DbContext(typeof(ActivityHelpersContext))]
-    [Migration("20210510082521_first2")]
-    partial class first2
+    [Migration("20210510090529_first_and_final")]
+    partial class first_and_final
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -99,11 +99,11 @@ namespace Api.Migrations
             modelBuilder.Entity("Data.Activity", b =>
                 {
                     b.HasOne("Data.Helper", "Helper")
-                        .WithMany()
+                        .WithMany("Activitys")
                         .HasForeignKey("HelperId");
 
                     b.HasOne("Data.Round", "Round")
-                        .WithMany()
+                        .WithMany("Activitys")
                         .HasForeignKey("RoundId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
