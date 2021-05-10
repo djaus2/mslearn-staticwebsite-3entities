@@ -22,6 +22,7 @@ rather than the one fixed entity. The ultimate aim is to have the app backed by 
 # Branches of the Repository
 Each is a bookmark in order of this progression.
 - See the list [here](http://www.sportronics.com.au/web/Azure_Static_Websites-Multiple_Entities-index.html)
+- The main branch is the final version of the app here:[djaus2/mslearn-staticwebsite-3entities](https://github.com/djaus2/mslearn-staticwebsite-3entities)
 
 
 
