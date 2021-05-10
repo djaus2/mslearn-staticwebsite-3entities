@@ -26,21 +26,13 @@ namespace Api
             int helperId,
             ILogger log)
         {
-            //var result = await helperData.DeleteHelper(helperId);
 
-            //if (result)
-            //{
-            //    return new OkResult();
-            //}
-            //else
-            //{
-            //    return new BadRequestResult();
-            //}
             try
             {
-                var allList = await _context.Helpers.ToListAsync();
-                var dateList = from l in allList where l.Id == helperId select l;
-                Helper helper = dateList.FirstOrDefault();
+                var helper = _context.Helpers
+                     .Where(l => l.Id == helperId)
+                     .Include(l => l.Activitys)
+                     .FirstOrDefault();
                 if (helper != null)
                 {
                     _context.Remove(helper);

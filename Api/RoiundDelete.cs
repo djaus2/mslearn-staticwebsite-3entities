@@ -38,9 +38,12 @@ namespace Api
             //}
             try
             {
-                var allList = await _context.Rounds.ToListAsync();
-                var dateList = from l in allList where l.Id == roundId select l;
-                Round round = dateList.FirstOrDefault();
+
+                var round = _context.Rounds
+                    .Where(l => l.Id == roundId)
+                    .Include(l => l.Activitys)
+                    .FirstOrDefault();
+
                 if (round != null)
                 {
                     _context.Remove(round);
@@ -57,7 +60,7 @@ namespace Api
                 else
                     return new BadRequestResult();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return new BadRequestResult();
             }

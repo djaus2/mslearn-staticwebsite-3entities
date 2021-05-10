@@ -6,6 +6,8 @@
   <ItemGroup>
     <Compile Remove="ActivitytData.cs" />
     <Compile Remove="HelperData.cs" />
+    <Compile Remove="Migrations\20210510061331_second.cs" />
+    <Compile Remove="Migrations\20210510061331_second.Designer.cs" />
     <Compile Remove="PeriodTrigger.cs" />
     <Compile Remove="RoundData.cs" />
     <Compile Remove="Storage.cs" />

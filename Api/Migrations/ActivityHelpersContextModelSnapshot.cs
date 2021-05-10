@@ -101,7 +101,7 @@ namespace Api.Migrations
                         .HasForeignKey("HelperId");
 
                     b.HasOne("Data.Round", "Round")
-                        .WithMany()
+                        .WithMany("Activitys")
                         .HasForeignKey("RoundId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

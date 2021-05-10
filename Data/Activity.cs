@@ -44,6 +44,7 @@ namespace Data
         [Column("Round")]
         [Required]
         public Round Round { get; set; }
+
     }
     public class Helper
     {
@@ -57,6 +58,9 @@ namespace Data
         public string Name { get; set; }
 		[Column("Decsription")]
         public string Description { get; set; } = "";
+
+        [JsonIgnore]
+        public ICollection<Activity> Activitys { get; set; }
     }
 
     public class Round
@@ -82,5 +86,8 @@ namespace Data
 
         [Column("Decsription")]
         public string Description { get; set; } = "";
+
+        [JsonIgnore]
+        public ICollection<Activity> Activitys { get; set; }
     }
 }

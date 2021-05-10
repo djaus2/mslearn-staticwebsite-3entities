@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 
 using System;
 using System.Configuration;
@@ -37,8 +38,10 @@ namespace Api
                 //var yy = (string)connectionstrings["DefaultConnection"];
                 SqlConnection = connectionstrings.GetValue<string>("DefaultConnection");
             }
-            builder.Services.AddDbContext<ActivityHelpersContext>(options =>
+
+            var xx = builder.Services.AddDbContext<ActivityHelpersContext>(options =>
                 options.UseSqlServer(SqlConnection));
+            //xx.AddOptions<ActivityHelpersContext>(x => x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
         }
     }
 }
