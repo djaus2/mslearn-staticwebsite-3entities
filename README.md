@@ -5,7 +5,7 @@ rather than the one fixed entity. The ultimate aim was to have the app backed by
 
 # Blog posts:
 1. [Multiple Entities and LocalStorage](/web/Azure_Static_Websites-Multiple_Entities-web.html)
-1. [Index of the Repository](/web/Azure_Static_Websites-Multiple_Entities-index.html) _This post._
+1. [Index of the Repository](/web/Azure_Static_Websites-Multiple_Entities-index.html)
 1. [Entity Framework Core Implementation](/web/_An_Azure_Static_Web_App_with_EF-Entity_Framework_Core_Implementation-web.html)
 1. [Cascade and SetNull Deletions](/web/An_Azure_Static_Web_App_with_EF-Casecade_and_SetNull_Deletions-web.html)
 
