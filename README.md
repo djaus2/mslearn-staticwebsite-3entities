@@ -14,7 +14,7 @@ Link: [Here on Azure](https://brave-wave-05ed2c51e.azurestaticapps.net/)
 
 # This Version
 - **Add-helper_and-round-apis** branch.
-- Implemented Helper and Round APIs and app pages
+- Implemented Helper and Round APIs and app pages using same functionality as in tutorial. _(Static data only: No database yet)_.
 
 
 # Links
