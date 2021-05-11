@@ -19,7 +19,9 @@ Link: [Here on Azure](https://brave-wave-05ed2c51e.azurestaticapps.net/)
 # Links
 - Start: The Azure Static Websites tutorial [here](https://docs.microsoft.com/en-us/learn/modules/publish-app-service-static-web-app-api-dotnet/)
 - [The Original Official/Microsoft Sample Repository](https://github.com/MicrosoftDocs/mslearn-staticwebapp-dotnet)
-- Functionality to be similar to Blazor Apps: [djaus2/EFBlazorBasics](https://github.com/djaus2/EFBlazorBasics) and [djaus2/EFBlazorBasics_Wasm](https://github.com/djaus2/EFBlazorBasics_Wasm) respositories.
+- Functionality to be similar to Blazor Apps: 
+  - [djaus2/EFBlazorBasics](https://github.com/djaus2/EFBlazorBasics) and 
+  - [djaus2/EFBlazorBasics_Wasm](https://github.com/djaus2/EFBlazorBasics_Wasm) respositories.
 
 # Branches of the Repository
 Each is a bookmark in order of this progression.
