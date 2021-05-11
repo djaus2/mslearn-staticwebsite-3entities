@@ -13,7 +13,7 @@ rather than the one fixed entity. The ultimate aim was to have the app backed by
 Link: [Here on Azure](https://brave-wave-05ed2c51e.azurestaticapps.net/)
 
 # This Version
-- **/Add-helper_and-round-apis**
+- **Add-helper_and-round-apis**
 - Implemented Helper and Round APIs and app pages
 
 
