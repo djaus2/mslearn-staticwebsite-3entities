@@ -1,28 +1,33 @@
 # About this Repository
 
 The starting point was the Azure Static Websites tutorial. The outcome of that was progressively extended so as to implement a number of editable entities 
-rather than the one fixed entity. The ultimate aim is to have the app backed by Entity Framework Core with access to an Azure SQL dataabase. The functionality is meant to be similar to that as in two Blazor apps which are available as repositories here. Each step in this "morphing" process has been bookmarked as a separate branch. The main branch is always the latest and is what is deployed as an Azure Static Websites for viewing.
+rather than the one fixed entity. The ultimate aim was to have the app backed by Entity Framework Core with access to an Azure SQL dataabase. The functionality is meant to be similar to that as in two Blazor apps which are available as repositories here. Each step in this "morphing" process has been bookmarked as a separate branch. The main branch is always the latest and is what is deployed as an Azure Static Websites for viewing.
 
-[The deployed app](https://brave-wave-05ed2c51e.azurestaticapps.net/)
+# Blog posts:
+1. [Multiple Entities and LocalStorage](https://davidjones.sportronics.com.au/web/Azure_Static_Websites-Multiple_Entities-web.html)
+1. [Index of the Repository](https://davidjones.sportronics.com.au/web/Azure_Static_Websites-Multiple_Entities-index.html)
+1. [Entity Framework Core Implementation](https://davidjones.sportronics.com.au/web/_An_Azure_Static_Web_App_with_EF-Entity_Framework_Core_Implementation-web.html)
+1. [Cascade and SetNull Deletions](https://davidjones.sportronics.com.au/web/An_Azure_Static_Web_App_with_EF-Casecade_and_SetNull_Deletions-web.html)
+
+# The Deployed App
+Link: [Here on Azure](https://brave-wave-05ed2c51e.azurestaticapps.net/)
 
 # This Version
-- This version (this bracnch) implements: 
-  - 3 Entities: Activity, Helper and Round. 
-    - **_A Helper volunteers for an activity which is for a specific round of athletics competition._**
-  - Entities are stored in a C# LocalStorage service.
-  - Can add, delete and modify the entities.
-  - Can reset the "pseudo" database to the initial entities.
-  - Nb: The app uses Scoped services so all users see the same data so please reset teh data if you give the deployed verion a go , when done.
+- **Attempt_to_add_ef_and_migration_and-sqlsvr** branch
+- Attempted to add Codefirst EF and Migration_and SQLSvr
+  - First, worked through blog post Using Entity Framework with Azure Functions, creating the project separate to this project.
+  - Then tried to apply same to the Api project here.
+  - But could not run add-migration. Got error message: [See 9. here](https://davidjones.sportronics.com.au/web/Azure_Static_Websites-Multiple_Entities-index.html)
+  - _Reworked through OK in next branch though._
 
 # Links
 - Start: The Azure Static Websites tutorial [here](https://docs.microsoft.com/en-us/learn/modules/publish-app-service-static-web-app-api-dotnet/)
 - [The Original Official/Microsoft Sample Repository](https://github.com/MicrosoftDocs/mslearn-staticwebapp-dotnet)
-- Functionality to be similar to Blazor Apps: [djaus2/EFBlazorBasics](https://github.com/djaus2/EFBlazorBasics) and [djaus2/EFBlazorBasics_Wasm](https://github.com/djaus2/EFBlazorBasics_Wasm) respositories.
+- Functionality to be similar to Blazor Apps: 
+  - [djaus2/EFBlazorBasics](https://github.com/djaus2/EFBlazorBasics) and 
+  - [djaus2/EFBlazorBasics_Wasm](https://github.com/djaus2/EFBlazorBasics_Wasm) respositories.
 
 # Branches of the Repository
 Each is a bookmark in order of this progression.
 - See the list [here](http://www.sportronics.com.au/web/Azure_Static_Websites-Multiple_Entities-index.html)
 - The main branch is the final version of the app here: [djaus2/mslearn-staticwebsite-3entities](https://github.com/djaus2/mslearn-staticwebsite-3entities)
-
-
-
