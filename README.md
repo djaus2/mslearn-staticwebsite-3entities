@@ -14,6 +14,7 @@ Link: [Here on Azure](https://brave-wave-05ed2c51e.azurestaticapps.net/)
 
 # This Version
 - ** Activitys-Helpers-Rounds-Basic** branch.
+- Added Helpers and Round entities as properties to Activitys. Can list Activitys and get Helpers and Rounds on client from that.
 
 # Links
 - Start: The Azure Static Websites tutorial [here](https://docs.microsoft.com/en-us/learn/modules/publish-app-service-static-web-app-api-dotnet/)
