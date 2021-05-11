@@ -4,10 +4,10 @@ The starting point was the Azure Static Websites tutorial. The outcome of that w
 rather than the one fixed entity. The ultimate aim was to have the app backed by Entity Framework Core with access to an Azure SQL dataabase. The functionality is meant to be similar to that as in two Blazor apps which are available as repositories here. Each step in this "morphing" process has been bookmarked as a separate branch. The main branch is always the latest and is what is deployed as an Azure Static Websites for viewing.
 
 # Blog posts:
-1. [Multiple Entities and LocalStorage](/web/Azure_Static_Websites-Multiple_Entities-web.html)
-1. [Index of the Repository](/web/Azure_Static_Websites-Multiple_Entities-index.html)
-1. [Entity Framework Core Implementation](/web/_An_Azure_Static_Web_App_with_EF-Entity_Framework_Core_Implementation-web.html)
-1. [Cascade and SetNull Deletions](/web/An_Azure_Static_Web_App_with_EF-Casecade_and_SetNull_Deletions-web.html)
+1. [Multiple Entities and LocalStorage](https://davidjones.sportronics.com.au/web/Azure_Static_Websites-Multiple_Entities-web.html)
+1. [Index of the Repository](https://davidjones.sportronics.com.au/web/Azure_Static_Websites-Multiple_Entities-index.html)
+1. [Entity Framework Core Implementation](https://davidjones.sportronics.com.au/web/_An_Azure_Static_Web_App_with_EF-Entity_Framework_Core_Implementation-web.html)
+1. [Cascade and SetNull Deletions](https://davidjones.sportronics.com.au/web/An_Azure_Static_Web_App_with_EF-Casecade_and_SetNull_Deletions-web.html)
 
 # The Deployed App
 Link: [Here on Azure](https://brave-wave-05ed2c51e.azurestaticapps.net/)
