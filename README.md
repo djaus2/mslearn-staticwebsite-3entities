@@ -10,7 +10,7 @@ rather than the one fixed entity. The ultimate aim was to have the app backed by
 1. [Cascade and SetNull Deletions](/web/An_Azure_Static_Web_App_with_EF-Casecade_and_SetNull_Deletions-web.html)
 
 # The Deployed App
-[On Azure](https://brave-wave-05ed2c51e.azurestaticapps.net/)
+Link: [Here on Azure](https://brave-wave-05ed2c51e.azurestaticapps.net/)
 
 # This Version
 - This is the final version of the app.
