@@ -1,91 +1,32 @@
----
-page_type: sample
-languages:
-  - csharp
-products:
-  - azure functions
-description: "Apps that can be used with as a starting point for some MS Learn Modules."
-urlFragment: "https://github.com/MicrosoftDocs/mslearn-staticwebapp-dotnet"
----
-
 # About this Repository
 
+The starting point was the Azure Static Websites tutorial. The outcome of that was progressively extended so as to implement a number of editable entities 
+rather than the one fixed entity. The ultimate aim was to have the app backed by Entity Framework Core with access to an Azure SQL dataabase. The functionality is meant to be similar to that as in two Blazor apps which are available as repositories here. Each step in this "morphing" process has been bookmarked as a separate branch. The main branch is always the latest and is what is deployed as an Azure Static Websites for viewing.
+
+# Blog posts:
+1. [Multiple Entities and LocalStorage](https://davidjones.sportronics.com.au/web/Azure_Static_Websites-Multiple_Entities-web.html)
+1. [Index of the Repository](https://davidjones.sportronics.com.au/web/Azure_Static_Websites-Multiple_Entities-index.html)
+1. [Entity Framework Core Implementation](https://davidjones.sportronics.com.au/web/_An_Azure_Static_Web_App_with_EF-Entity_Framework_Core_Implementation-web.html)
+1. [Cascade and SetNull Deletions](https://davidjones.sportronics.com.au/web/An_Azure_Static_Web_App_with_EF-Casecade_and_SetNull_Deletions-web.html)
+
+# The Deployed App
+Link: [Here on Azure](https://brave-wave-05ed2c51e.azurestaticapps.net/)
+
+# This Version
+- **Can-recreate-db** branch
+- Code First EF Works with Azure SQL Database except:
+  - Can delete a Round or Helper if not used by an Activity. Have to move them from eth activity or delete teh activity first.
+  - Need to get Cascade Delete etc to woork.  _See main branch._
+  - More information on the blog [here](http://www.sportronics.com.au/web/Azure_Static_Websites-Multiple_Entities-index.html)
+
+# Links
 - Start: The Azure Static Websites tutorial [here](https://docs.microsoft.com/en-us/learn/modules/publish-app-service-static-web-app-api-dotnet/)
-- Objective: Morph from the single entity app to multiple entity app using Entity Framework Core
-- Functionality to be similar to Blazor Apps: [djaus2/EFBlazorBasics](https://github.com/djaus2/EFBlazorBasics) and [djaus2/EFBlazorBasics_Wasm](https://github.com/djaus2/EFBlazorBasics_Wasm) respostories.
-- This version implements: 
-  - 3 Entities: Activity, Helper and Round. A Helper volunteers for a activity which is for a specific round of athletics competition.
-  - Entities are stored in a C# LocalStorage service.
-- Running Version on Azure [here](https://brave-wave-05ed2c51e.azurestaticapps.net/)
+- [The Original Official/Microsoft Sample Repository](https://github.com/MicrosoftDocs/mslearn-staticwebapp-dotnet)
+- Functionality to be similar to Blazor Apps: 
+  - [djaus2/EFBlazorBasics](https://github.com/djaus2/EFBlazorBasics) and 
+  - [djaus2/EFBlazorBasics_Wasm](https://github.com/djaus2/EFBlazorBasics_Wasm) respositories.
 
-<hr/>
-
-# Official Microsoft Sample
-
-Follow the hands-on tutorial to [publish a Blazor WebAssembly app and .NET API with Azure Static Web Apps](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api-dotnet/?WT.mc_id=mslearn_staticwebapp-github-aapowell).
-
-## Static Web App
-
-This repository contains apps that can be used with as a starting point for some MS Learn Modules.
-
-The shopping theme is used throughout the app.
-
-## Contents
-
-The apps written in Blazor WebAssembly with a C# Azure Functions API.
-
-## Prerequisites
-
-- Familiarity with Blazor
-- Beginner-level experience with Azure Functions
-- A GitHub account
-- [Node.js LTS and Git](https://nodejs.org/)
-- [Visual Studio](https://visualstudio.microsoft.com/vs/?wt.mc_id=mslearn_staticwebapp-github-aapowell) or [Visual Studio Code](https://code.visualstudio.com/?wt.mc_id=mslearn_staticwebapp-github-aapowell) installed
-- The [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions?wt.mc_id=mslearn_staticwebapp-github-aapowell) extension installed (if using Visual Studio Code)
-- [The Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local?wt.mc_id=mslearn_staticwebapp-github-aapowell) installed (if using Visual Studio Code)
-
-## Problems or Suggestions
-
-[Open an issue here](https://github.com/MicrosoftDocs/mslearn-staticwebapp-dotnet/issues)
-
-## Resources
-
-### Azure Static Web Apps
-
-- Learn how to [Publish an Angular, React, Svelte, or Vue JavaScript app and API with Azure Static Web Apps](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api-dotnet?wt.mc_id=mslearn_staticwebapp-github-aapowell)
-- [API support in Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/apis?wt.mc_id=mslearn_staticwebapp-github-aapowell)
-- [Add an API to Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/add-api?wt.mc_id=mslearn_staticwebapp-github-aapowell)
-- [Authentication and authorization](https://docs.microsoft.com/azure/static-web-apps/authentication-authorization?wt.mc_id=mslearn_staticwebapp-github-aapowell)
-- [Routes](https://docs.microsoft.com/azure/static-web-apps/routes?wt.mc_id=mslearn_staticwebapp-github-aapowell)
-- [Review pre-production environments](https://docs.microsoft.com/azure/static-web-apps/review-publish-pull-requests?wt.mc_id=mslearn_staticwebapp-github-aapowell)
-
-### Azure Functions
-
-- Learn about the Azure Functions [local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file?wt.mc_id=mslearn_staticwebapp-github-aapowell) file
-- Learn how to [Deploy to Azure Using Azure Functions](https://code.visualstudio.com/tutorials/functions-extension/getting-started?wt.mc_id=mslearn_staticwebapp-github-aapowell)
-- Sign up for a [Free Trial of Azure](https://azure.microsoft.com/free/?wt.mc_id=mslearn_staticwebapp-github-aapowell)
-
-### Visual Studio Code
-
-- [Azure Free Trial](https://azure.microsoft.com/free/?wt.mc_id=mslearn_staticwebapp-github-aapowell)
-- [VS Code](https://code.visualstudio.com?wt.mc_id=mslearn_staticwebapp-github-aapowell)
-- [VS Code Extension for Node on Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack&WT.mc_id=mslearn_staticwebapp-github-aapowell)
-- Azure Functions [local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file?WT.mc_id=mslearn_staticwebapp-github-aapowell) file
-
-### Debugging Resources
-
-- [Debugging Blazor WebAssembly](https://docs.microsoft.com/aspnet/core/blazor/debug?wt.mc_id=mslearn_staticwebapp-github-aapowell)
-
-## Contributing
-
-This project welcomes contributions and suggestions. Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
-
-When you submit a pull request, a CLA bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+# Branches of the Repository
+Each is a bookmark in order of this progression.
+- See the list [here](http://www.sportronics.com.au/web/Azure_Static_Websites-Multiple_Entities-index.html)
+- The main branch is the final version of the app here: [djaus2/mslearn-staticwebsite-3entities](https://github.com/djaus2/mslearn-staticwebsite-3entities)
