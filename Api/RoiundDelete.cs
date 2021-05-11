@@ -26,16 +26,6 @@ namespace Api
             int roundId,
             ILogger log)
         {
-            //var result = await roundData.DeleteRound(roundId);
-
-            //if (result)
-            //{
-            //    return new OkResult();
-            //}
-            //else
-            //{
-            //    return new BadRequestResult();
-            //}
             try
             {
 

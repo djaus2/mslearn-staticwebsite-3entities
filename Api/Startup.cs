@@ -30,18 +30,13 @@ namespace Api
                 .AddJsonFile("local.settings.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables()
                 .Build();
-
-            
-     
+ 
                 var connectionstrings = config.GetSection("ConnectionStrings");
-
-                //var yy = (string)connectionstrings["DefaultConnection"];
                 SqlConnection = connectionstrings.GetValue<string>("DefaultConnection");
             }
 
-            var xx = builder.Services.AddDbContext<ActivityHelpersContext>(options =>
+           builder.Services.AddDbContext<ActivityHelpersContext>(options =>
                 options.UseSqlServer(SqlConnection));
-            //xx.AddOptions<ActivityHelpersContext>(x => x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
         }
     }
 }

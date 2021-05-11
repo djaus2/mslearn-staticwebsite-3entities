@@ -26,20 +26,11 @@ namespace Api
             int activityId,
             ILogger log)
         {
-            //var result1 = await activityData.DeleteActivity(activityId);
-            //if (result1 )
-            //{
-            //    return new OkResult();
-            //}
-            //else
-            //{
-            //    return new BadRequestResult();
-            //}
             try
             {
-                var allList = await _context.Activitys.ToListAsync();
-                var dateList = from l in allList where l.Id == activityId select l;
-                Activity activity = dateList.FirstOrDefault();
+                var activity = _context.Activitys
+                     .Where(l => l.Id == activityId)
+                     .FirstOrDefault();
                 if (activity != null)
                 {
                     _context.Remove(activity);

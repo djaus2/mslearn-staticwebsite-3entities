@@ -28,13 +28,22 @@ namespace Api
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "helpers")] HttpRequest req,
             ILogger log)
         {
-            var body = await new StreamReader(req.Body).ReadToEndAsync();
-            //var helper = JsonSerializer.Deserialize<Helper>(body, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
-            var helper = JsonConvert.DeserializeObject<Helper>(body);
-
-            _context.Add(helper);
-            await _context.SaveChangesAsync();
-            return new OkObjectResult(helper);
+            try
+            {
+                var body = await new StreamReader(req.Body).ReadToEndAsync();
+                var helper = JsonConvert.DeserializeObject<Helper>(body);
+                if (helper != null)
+                {
+                    _context.Add(helper);
+                    await _context.SaveChangesAsync();
+                    return new OkObjectResult(helper);
+                }
+                else
+                    return new BadRequestResult();
+            } catch (Exception ex)
+            {
+                return new BadRequestResult();
+            }
         }
     }
 }

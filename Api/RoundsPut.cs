@@ -28,24 +28,30 @@ namespace Api
             [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "rounds")] HttpRequest req,
             ILogger log)
         {
-            var body = await new StreamReader(req.Body).ReadToEndAsync();
-            var round = JsonConvert.DeserializeObject<Round>(body);
-
-            if (round != null)
+            try
             {
-                _context.Update(round);
-                var result = await _context.SaveChangesAsync();
-                if (result == 1)
+                var body = await new StreamReader(req.Body).ReadToEndAsync();
+                var round = JsonConvert.DeserializeObject<Round>(body);
+
+                if (round != null)
                 {
-                    return new  OkObjectResult(round);
+                    _context.Update(round);
+                    var result = await _context.SaveChangesAsync();
+                    if (result == 1)
+                    {
+                        return new OkObjectResult(round);
+                    }
+                    else
+                    {
+                        return new BadRequestResult();
+                    }
                 }
                 else
-                {
                     return new BadRequestResult();
-                }
-            }
-            else
+            } catch (Exception ex)
+            {
                 return new BadRequestResult();
+            }
         }
     }
 }

@@ -28,27 +28,33 @@ namespace Api
             [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "activitys")] HttpRequest req,
             ILogger log)
         {
-            var body = await new StreamReader(req.Body).ReadToEndAsync();
-            Activity activity = JsonConvert.DeserializeObject<Activity>(body);
-
-            if (activity != null)
+            try
             {
-                if (activity.Helper != null)
-                    _context.Attach(activity.Helper); // <-- new
-                _context.Attach(activity.Round);  // <-- new
-                _context.Update(activity);
-                var result = await _context.SaveChangesAsync();
-                if (result == 1)
+                var body = await new StreamReader(req.Body).ReadToEndAsync();
+                Activity activity = JsonConvert.DeserializeObject<Activity>(body);
+
+                if (activity != null)
                 {
-                    return new OkObjectResult(activity);
+                    if (activity.Helper != null)
+                        _context.Attach(activity.Helper);
+                    _context.Attach(activity.Round);
+                    _context.Update(activity);
+                    var result = await _context.SaveChangesAsync();
+                    if (result == 1)
+                    {
+                        return new OkObjectResult(activity);
+                    }
+                    else
+                    {
+                        return new BadRequestResult();
+                    }
                 }
                 else
-                {
                     return new BadRequestResult();
-                }
-            }
-            else
+            } catch (Exception ex)
+            {
                 return new BadRequestResult();
+            }
         }
     }
 }

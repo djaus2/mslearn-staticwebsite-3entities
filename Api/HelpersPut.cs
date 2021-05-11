@@ -28,24 +28,30 @@ namespace Api
             [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "helpers")] HttpRequest req,
             ILogger log)
         {
-            var body = await new StreamReader(req.Body).ReadToEndAsync();
-            Helper helper = JsonConvert.DeserializeObject<Helper>(body);
-
-            if (helper != null)
+            try
             {
-                _context.Update(helper);
-                var result = await _context.SaveChangesAsync();
-                if (result == 1)
+                var body = await new StreamReader(req.Body).ReadToEndAsync();
+                Helper helper = JsonConvert.DeserializeObject<Helper>(body);
+
+                if (helper != null)
                 {
-                    return new OkObjectResult(helper);
+                    _context.Update(helper);
+                    var result = await _context.SaveChangesAsync();
+                    if (result == 1)
+                    {
+                        return new OkObjectResult(helper);
+                    }
+                    else
+                    {
+                        return new BadRequestResult();
+                    }
                 }
                 else
-                {
                     return new BadRequestResult();
-                }
-            }
-            else
+            } catch (Exception ex)
+            {
                 return new BadRequestResult();
+            }
         }
     }
 }
