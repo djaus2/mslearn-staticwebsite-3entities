@@ -14,7 +14,7 @@ Link: [Here on Azure](https://brave-wave-05ed2c51e.azurestaticapps.net/)
 
 # This Version
 - This is the final version of the app.
-- All EF CRUD operations work with all three entities, with Include directives.
+- All EF CRUD operations work with all three entities, with Include directives, using an Azure SQL Database.
 
 # Links
 - Start: The Azure Static Websites tutorial [here](https://docs.microsoft.com/en-us/learn/modules/publish-app-service-static-web-app-api-dotnet/)
