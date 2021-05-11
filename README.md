@@ -13,7 +13,8 @@ rather than the one fixed entity. The ultimate aim was to have the app backed by
 Link: [Here on Azure](https://brave-wave-05ed2c51e.azurestaticapps.net/)
 
 # This Version
--The initial commit after forking the repository from teh first link as below.
+- **Initial-Commit** branch of the repsotory
+- The initial commit aftercreating this repository from teh template at MicrosoftDocs/mslearn-staticwebapp-dotnet (see Start: below).
 
 # Links
 - Start: The Azure Static Websites tutorial [here](https://docs.microsoft.com/en-us/learn/modules/publish-app-service-static-web-app-api-dotnet/)
