@@ -15,7 +15,7 @@ Link: [Here on Azure](https://brave-wave-05ed2c51e.azurestaticapps.net/)
 # This Version
 - **Completed-tutorial** branch
 - After completing the tutorial at  [MicrosoftDocs/mslearn-staticwebapp-dotnet](https://docs.microsoft.com/en-us/learn/modules/publish-app-service-static-web-app-api-dotnet/?WT.mc_id=AZ-MVP-5000301)
-- Which uses the Template:  [MicrosoftDocs/mslearn-staticwebapp-dotnet](https://github.com/MicrosoftDocs/mslearn-staticwebapp-dotnet)
+  - Which uses the Template:  [MicrosoftDocs/mslearn-staticwebapp-dotnet](https://github.com/MicrosoftDocs/mslearn-staticwebapp-dotnet)
 
 # Links
 - Start: The Azure Static Websites tutorial [here](https://docs.microsoft.com/en-us/learn/modules/publish-app-service-static-web-app-api-dotnet/)
