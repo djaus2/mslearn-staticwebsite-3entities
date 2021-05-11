@@ -16,7 +16,7 @@ Link: [Here on Azure](https://brave-wave-05ed2c51e.azurestaticapps.net/)
 - **Can-recreate-db** branch
 - Code First EF Works with Azure SQL Database except:
   - Can delete a Round or Helper if not used by an Activity. Have to move them from eth activity or delete teh activity first.
-  - Need to get Cascade Delete etc to woork.  _See main branch._
+  - Need to get Cascade Delete etc to work.  _See main branch._
   - More information on the blog [here](http://www.sportronics.com.au/web/Azure_Static_Websites-Multiple_Entities-index.html)
 
 # Links
